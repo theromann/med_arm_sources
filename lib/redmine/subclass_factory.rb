@@ -22,23 +22,19 @@ module Redmine
     end 
 
     module ClassMethods
-      def get_subclass(class_name)
-        klass = nil
-        begin
-          # TODO: перенести в патч ArmStatus #190
-          if class_name.match(/(Status$)/).present? and class_name.match(/(Status$)/)[1]== "Status"
-            klass = class_name.to_s.constantize
-          else
-            klass = class_name.to_s.classify.constantize
-          end
-        rescue
-          # invalid class name
-        end
-        unless subclasses.include? klass
+      module ClassMethods
+        def get_subclass(class_name)
           klass = nil
+          begin
+            klass = class_name.to_s.classify.constantize
+          rescue
+            # invalid class name
+          end
+          unless subclasses.include? klass
+            klass = nil
+          end
+          klass
         end
-        klass
-      end
 
       # Returns an instance of the given subclass name
       def new_subclass_instance(class_name, *args)
