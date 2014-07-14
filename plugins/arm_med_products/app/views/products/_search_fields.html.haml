@@ -1,0 +1,12 @@
+.search
+  = hidden_field_tag 'form_send_detector', true
+  = text_field_tag 'products_search_query', session[:products_search_query], size: 80,
+      placeholder: l(:search)
+  = submit_tag l(:search), class: 'small', name: nil
+  = link_to l(:button_clear), '#', class: 'icon icon-reload',
+      onclick: 'window.location="/products?products_search_query=&form_send_detector"'
+  %fieldset{class: "collapsible collapsed"}
+    %legend= l(:search_fields_label)
+    %div
+      = select_tag 'products_search_fields', available_search_fields_options,
+          multiple: true

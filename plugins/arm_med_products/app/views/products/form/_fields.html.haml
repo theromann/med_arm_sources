@@ -1,0 +1,9 @@
+= javascript_include_tag :collapsible, plugin: :arm_common
+= javascript_include_tag 'select2.min.js', plugin: :arm_common
+= javascript_include_tag :select2_locale_ru, plugin: :arm_common
+= javascript_include_tag :products, plugin: :arm_med_products
+#product_form_fields
+  -f = nil
+  - semantic_form_for @product do |form| f=form; end
+  = f.inputs class: 'qa-field-group' do
+    = render 'products/form/updated_fields', f: f

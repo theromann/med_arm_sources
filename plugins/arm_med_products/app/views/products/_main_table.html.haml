@@ -1,0 +1,35 @@
+= form_tag({}) do
+  #hor-scroll-wrapper
+    #hor-scroll
+  .autoscroll.sync-scroll-bars
+    %table.list.issues
+      %thead
+        = content_tag(:th)
+        - @query.inline_columns.each do |column|
+          = column_header_with_product(column)
+      %tbody
+        - previous_group = false
+        - @products.each do |product|
+          - if @query.grouped? && (group = @query.group_by_column.value(product)) != previous_group
+            - reset_cycle
+            %tr.group.open
+              %td{colspan: "#{@query.inline_columns.size + 1}"}
+                %span.expander{onclick: "toggleRowGroup(this);"} &nbsp;
+                = group.blank? ? l(:label_none) : column_content(@query.group_by_column, product)
+                %span.count= @product_count_by_group[group]
+                = link_to_function("#{l(:button_collapse_all)}/#{l(:button_expand_all)}",
+                                       "toggleAllRowGroups(this)", :class => 'toggle-all')
+
+            - previous_group = group
+          %tr{id: "product-#{product.id}",
+           class: "hascontextmenu #{cycle('odd', 'even')} "}
+            %td{class: "checkbox hide-when-print"}
+              = check_box_tag("ids[]", product.id, false, id: nil)
+            - @query.inline_columns.each do |column|
+              %td{class: "#{column.css_classes}"}
+                = product_column_content(column, product)
+            - @query.block_columns.each do |column|
+              - if (text = product_column_content(column, product)) && text.present?
+                %tr{class: "#{current_cycle}"}
+                  %td{colspan: "#{@query.inline_columns.size + 1}", class: "#{column.css_classes}"}
+                    = "#{content_tag(:span, column.caption, class: 'block-info-caption')}: #{text}".html_safe

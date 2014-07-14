@@ -1,0 +1,8 @@
+-content_for :header_tags do
+  = stylesheet_link_tag :product_settings, :plugin => :arm_med_products
+  = javascript_include_tag :product_settings, plugin: :arm_med_products
+
+%fieldset.box.label-without-negative-margin
+  %legend= l(:setting_product_list_default_columns)
+  = render_query_columns_selection(ProductQuery.new(column_names: Setting.plugin_arm_med_products['product_list_default_columns']),
+      name: 'settings[product_list_default_columns]')

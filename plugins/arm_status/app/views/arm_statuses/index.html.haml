@@ -1,0 +1,32 @@
+%h2=l('label.arm_statuses')
+
+-ArmStatus.get_subclasses.each do |klass|
+  %h3= l(klass::OptionName)
+
+  -arm_statuses = klass.all
+  -if arm_statuses.any?
+    %table.list
+      %thead
+        %tr
+          %th= l(:field_name)
+          %th{style: "width:15%"}
+            = l(:field_is_default)
+          %th{style: "width:15%"}
+            = l('field.is_final')
+          %th{style: "width:15%"}
+          %th{align:"center", style:"width:10%;"}
+      - arm_statuses.each do |arm_status|
+        %tr{class: "#{cycle('odd', 'even')}"}
+          %td
+            =link_to h(arm_status), edit_arm_status_path(arm_status)
+          %td.center{style:"width:15%;"}
+            = checked_image arm_status.is_default?
+          %td.center{style:"width:15%;"}
+            = checked_image arm_status.is_final?
+          %td{style:"width:15%;"}
+            = reorder_links('arm_status', {:action => 'update', :id => arm_status}, :put)
+          %td.buttons
+            = delete_link arm_status_path(arm_status)
+    - reset_cycle
+  %p= link_to l('label.arm_status_new'), new_arm_status_path(:type => klass.name)
+-html_title(l('label.arm_statuses'))

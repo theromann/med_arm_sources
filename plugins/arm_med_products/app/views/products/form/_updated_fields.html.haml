@@ -1,0 +1,10 @@
+= javascript_include_tag :select2_multi_product, plugin: :arm_common
+
+= f.inputs do
+  = f.input :name
+  = f.input :count
+  = f.input :unit
+  = f.input :price
+  -#= f.input :status, input_html: { :class => 'select2 non-select2-search select2_updated_qa_action_field' }
+  = f.input :note
+

@@ -1,0 +1,31 @@
+- html_title(l('labels.products'))
+
+= javascript_include_tag :context_menu
+= stylesheet_link_tag :context_menu
+= javascript_include_tag :select_list_move
+= javascript_include_tag :collapsible, plugin: :arm_common
+= stylesheet_link_tag :products, plugin: :arm_med_products
+- content_for :header_tags do
+  = stylesheet_link_tag :select2, plugin: :arm_common
+  = javascript_include_tag 'select2.min.js', plugin: :arm_common
+  = javascript_include_tag :select2_locale_ru, plugin: :arm_common
+  = javascript_include_tag :search_fields_select2, plugin: :arm_common
+  = javascript_include_tag :products_list, plugin: :arm_med_products
+- rewrite_title(l('labels.products'))
+- content_for :sidebar do
+  = render 'sidebar'
+
+.qa-action-top-elements
+  .contextual
+    = link_to l('products.new'), new_product_path, class: 'icon icon-add'
+
+= form_tag({ controller: 'products', action: 'index' }, method: :get, id: 'query_form') do
+  = hidden_field_tag 'set_filter', '0'
+  -##query_form_content.hide-when-print
+  -#  filters here
+
+  = render 'search_fields'
+
+%p.pagination= pagination_links_full @products_pages, @products_count
+= render partial: 'main_table'
+%p.pagination= pagination_links_full @products_pages, @products_count

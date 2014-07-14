@@ -1,0 +1,28 @@
+ru:
+  arm_status_menu:     Списки статусов
+  arm_tracker_menu:    Виды работ (общие)
+  arm_trackers:        Виды работ (общие)
+  arm_workflow_menu:   Последовательность действие (общие)
+
+  text_arm_status_destroy_question: "%{count} объект(а,ов) связаны с этим значением."
+  text_arm_status_category_reassign_to: 'Назначить им следующее значение:'
+  text_arm_tracker_no_workflow: Для этого трекера последовательность действий не определена
+
+  label:
+    arm_statuses:              Списки статусов
+    arm_tracker:               Трекер (общий)
+    arm_tracker_new:           Новый трекер (общий)
+    arm_tracker_plural:        Трекеры (Общие)
+    arm_status_new:            Новый статус
+
+    contact_status_new:       Новый статус контакта
+
+  field:
+    is_final:                   Финальный
+
+  contact_status: Статусы контактов
+  field_is_final:                   Финальный
+  contact_person_status: Статусы контактного лица
+  label_crm_contact_status: Статус клиента
+  label_crm_contact_person_status: Статус контактного лица
+  label_crm_arm_status: Статус

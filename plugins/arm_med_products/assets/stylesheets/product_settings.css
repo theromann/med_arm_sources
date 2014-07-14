@@ -1,0 +1,8 @@
+.tabular.settings .label-without-negative-margin label {
+  margin-left: 0;
+  width: auto;
+}
+
+#settings input[name="commit"] {
+  position: relative;
+}

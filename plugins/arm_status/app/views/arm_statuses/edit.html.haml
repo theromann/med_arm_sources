@@ -1,0 +1,8 @@
+%h2
+  = link_to(l(@arm_status.option_name), arm_statuses_path)
+  »
+  =h @arm_status
+
+= labelled_form_for :arm_status, @arm_status, :url => arm_status_path(@arm_status), :html => {:method => :put} do |f|
+  = render :partial => 'form', :locals => {:f => f}
+  = submit_tag l(:button_save)

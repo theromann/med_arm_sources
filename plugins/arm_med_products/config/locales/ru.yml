@@ -1,0 +1,31 @@
+ru:
+  field_name: Наименование
+  field_count: Количество
+  field_price: Цена
+  field_location: Месторасположение
+  field_note: Описание
+  field_unit: Ед.
+  field_status: Статус
+
+  setting_product_list_default_columns: Столбцы, отображаемые в списке карточек по умолчанию
+  labels:
+    products: Товары(продукты)
+
+  link_to_show_all: показать все
+
+  products:
+    new:    Cоздать новый продукт(товар)
+    edit:   Редактировать продукт(товар)
+    destroy: Удалить продукт(товар)
+
+  search: Поиск
+  search_fields_label: Поля для поиска
+  search_fields:
+      id: Номер карточки
+      name: Наименование
+      count: Количество
+      price: Цена
+      location: Месторасположение
+      status: Статус
+      note: Описание
+      unit: Ед.

@@ -1,0 +1,15 @@
+%h2
+  = l(@arm_status.option_name)
+  :
+  =h @arm_status
+
+= form_tag({}, :method => :delete)
+#box
+  %p%strong = l(:text_arm_status_destroy_question, @arm_status.objects_count)
+  %p%label{for:'reassign_to_id'}
+  = l(:text_arm_status_category_reassign_to)
+  = select_tag 'reassign_to_id', (content_tag('option', "--- #{l(:actionview_instancetag_blank_option)} ---") + options_from_collection_for_select(@arm_statuses, 'id', 'name'))
+
+
+= submit_tag l(:button_apply)
+= link_to l(:button_cancel), arm_statuses_path

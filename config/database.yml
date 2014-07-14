@@ -1,0 +1,22 @@
+base: &base
+  adapter: mysql2
+  host: localhost
+  username: med_arm
+  password: med_arm
+  encoding: utf8
+  reconnect: true
+  timeout: 5000
+  pool: 5
+
+development:
+  database: med_arm_development
+  <<: *base
+
+production:
+  database: med_arm_production
+  <<: *base
+
+test:
+  database: med_arm_test
+  <<: *base
+  <<: *base
