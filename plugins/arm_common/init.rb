@@ -1,6 +1,6 @@
 Redmine::Plugin.register :arm_common do
   name 'Arm Common plugin'
-  author 'Arm Co'
+  author 'Arm Corp'
   description 'This is a plugin for Redmine'
   version '0.0.1'
 end
