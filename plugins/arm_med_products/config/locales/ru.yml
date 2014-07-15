@@ -9,14 +9,16 @@ ru:
 
   setting_product_list_default_columns: Столбцы, отображаемые в списке карточек по умолчанию
   labels:
-    products: Товары(продукты)
+    products: Товары
 
   link_to_show_all: показать все
 
   products:
-    new:    Cоздать новый продукт(товар)
-    edit:   Редактировать продукт(товар)
-    destroy: Удалить продукт(товар)
+    new:    Cоздать новый товар
+    edit:   Редактировать товар
+    destroy: Удалить товар
+
+  products_groups: Группы товаров
 
   search: Поиск
   search_fields_label: Поля для поиска

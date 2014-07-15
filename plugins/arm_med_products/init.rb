@@ -33,3 +33,5 @@ Rails.configuration.to_prepare do
     resource_constant.send(:include, resource_patch_constant) unless resource_constant.included_modules.include? resource_patch_constant
   end
 end
+
+require_dependency 'products_group'
