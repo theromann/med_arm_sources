@@ -2,10 +2,11 @@ class Product < ActiveRecord::Base
   unloadable
   # belongs_to :status, class_name: 'CountProductStatus'
   # belongs_to :location
+  # belongs_to :products_group
   include Redmine::SafeAttributes
   DEFAULT_SEARCH_FIELDS = %w( id name note )
 
-  SORTING_SEARCHING_FIELDS = %w( id name count price location status note unit )
+  SORTING_SEARCHING_FIELDS = %w( id name count price  status note unit )
 
   SEARCH_FIELDS = [
       ['id', "`qa_actions`.id"],
@@ -42,10 +43,11 @@ class Product < ActiveRecord::Base
   safe_attributes 'name',
                   'count',
                   'price',
-                  'location_id',
-                  'status_id',
+                  # 'location_id',
+                  # 'status_id',
                   'note',
                   'unit'
+                  # 'products_group_id'
 
 
 end

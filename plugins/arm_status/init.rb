@@ -16,17 +16,15 @@ end
 
 
 Rails.configuration.to_prepare do
-  # require_dependency 'arm_status'
-  # require_dependency 'contact_status'
+  require_dependency 'arm_status'
+  require_dependency 'product_status'
   # require_dependency 'contact_person_status'
-  # require_dependency 'arm_status/contact_patch'
+  require_dependency 'arm_status/product_patch'
   # require_dependency 'arm_status/contacts_helper_patch'
   # require_dependency 'arm_status/contacts_controller_patch'
-  # [
-  #     [Contact, ArmStatusPlugin::ContactPatch],
-  #     [ContactsHelper, ArmStatusPlugin::ContactsHelperPatch],
-  #     [ContactsController, ArmStatusPlugin::ContactsControllerPatch]
-  # ].each do |cl, patch|
-  #   cl.send(:include, patch) unless cl.included_modules.include? patch
-  # end
+  [
+      [Product, ArmStatusPlugin::ProductPatch],
+  ].each do |cl, patch|
+    cl.send(:include, patch) unless cl.included_modules.include? patch
+  end
 end
