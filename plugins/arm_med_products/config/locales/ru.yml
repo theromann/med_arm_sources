@@ -4,6 +4,7 @@ ru:
   field_price: Цена
   field_location: Месторасположение
   field_note: Описание
+  field_product_item: Артикул
   field_unit: Ед.
   field_status: Статус
   field_group: Группа

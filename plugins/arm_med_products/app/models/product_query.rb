@@ -30,6 +30,7 @@ class ProductQuery < Query
       ProductQueryColumn.new(:status, sortable: "#{ProductStatus.table_name}.name", default_order: 'desc', groupable: true),
       ProductQueryColumn.new(:group, sortable: "#{ProductsGroup.table_name}.name", default_order: 'desc', groupable: true),
       ProductQueryColumn.new(:note, sortable: "#{Product.table_name}.note", default_order: 'desc'),
+      ProductQueryColumn.new(:product_item, sortable: "#{Product.table_name}.product_item", default_order: 'desc'),
       ProductQueryColumn.new(:unit, sortable: "#{Product.table_name}.unit", default_order: 'desc')
   ]
 
@@ -42,6 +43,7 @@ class ProductQuery < Query
     add_available_filter 'status_id', type: :list, values: Product.all.map(&:status).compact.map{|status| [status.to_s, status.id.to_s]}.uniq.sort
     add_available_filter 'group_id', type: :list, values: Product.all.map(&:group).compact.map{|group| [group.to_s, group.id.to_s]}.uniq.sort
     add_available_filter 'note', type: :list, values: Product.all.map(&:note).compact.map{|note| note}.uniq.sort
+    add_available_filter 'product_item', type: :list, values: Product.all.map(&:product_item).compact.map{|product_item| product_item}.uniq.sort
     add_available_filter 'unit', type: :list, values: Product.all.map(&:note).compact.map{|unit| unit}.uniq.sort
     add_available_filter 'deadline', type: :date
   end

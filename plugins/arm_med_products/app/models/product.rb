@@ -4,12 +4,13 @@ class Product < ActiveRecord::Base
   # belongs_to :location
   belongs_to :group, class_name: 'ProductsGroup'
   include Redmine::SafeAttributes
-  DEFAULT_SEARCH_FIELDS = %w( id name note )
+  DEFAULT_SEARCH_FIELDS = %w( id name note product_item )
 
-  SORTING_SEARCHING_FIELDS = %w( id name count price  status note unit )
+  SORTING_SEARCHING_FIELDS = %w( id name count price status note unit product_item)
 
   SEARCH_FIELDS = [
-      ['id', "`qa_actions`.id"],
+      ['id', "`products`.id"],
+      ['product_item', "`products`.product_item"],
       ['name', "`products`.name"],
       ['count', "`products`.count"],
       ['price', "`products`.price"],
@@ -48,8 +49,9 @@ class Product < ActiveRecord::Base
                   # 'location_id',
                   'status_id',
                   'note',
-                  'unit'
-                  'group_id'
+                  'unit',
+                  'group_id',
+                  'product_item'
 
 
 end

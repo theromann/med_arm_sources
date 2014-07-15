@@ -132,7 +132,6 @@ class ProductsController < ApplicationController
 
   def sort_order
     sort_init 'id', 'desc'
-    # products означает dse_products
     sort_update(  'id' => 'products.id',
                   'name' => 'products.name',
                   'note' => 'products.note'
