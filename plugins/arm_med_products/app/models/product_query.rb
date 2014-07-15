@@ -27,7 +27,8 @@ class ProductQuery < Query
       ProductQueryColumn.new(:price, sortable: "#{Product.table_name}.price", default_order: 'desc'),
       ProductQueryColumn.new(:count, sortable: "#{Product.table_name}.count", default_order: 'desc'),
       # ProductQueryColumn.new(:location, sortable: "#{Location.table_name}.name", default_order: 'desc', groupable: true),
-      # ProductQueryColumn.new(:status, sortable: "#{CountProductStatus.table_name}.name", default_order: 'desc', groupable: true),
+      ProductQueryColumn.new(:status, sortable: "#{ProductStatus.table_name}.name", default_order: 'desc', groupable: true),
+      ProductQueryColumn.new(:group, sortable: "#{ProductsGroup.table_name}.name", default_order: 'desc', groupable: true),
       ProductQueryColumn.new(:note, sortable: "#{Product.table_name}.note", default_order: 'desc'),
       ProductQueryColumn.new(:unit, sortable: "#{Product.table_name}.unit", default_order: 'desc')
   ]
@@ -38,7 +39,8 @@ class ProductQuery < Query
     add_available_filter 'price', type: :list, values: Product.all.map(&:price).compact.map{|price| price}.uniq.sort
     add_available_filter 'count', type: :list, values: Product.all.map(&:count).compact.map{|count| count}.uniq.sort
     # add_available_filter 'location_id', type: :list, values: Product.all.map(&:location).compact.map{|location| [location.to_s, location.id.to_s]}.uniq.sort
-    # add_available_filter 'status_id', type: :list, values: Product.all.map(&:status).compact.map{|status| [status.to_s, status.id.to_s]}.uniq.sort
+    add_available_filter 'status_id', type: :list, values: Product.all.map(&:status).compact.map{|status| [status.to_s, status.id.to_s]}.uniq.sort
+    add_available_filter 'group_id', type: :list, values: Product.all.map(&:group).compact.map{|group| [group.to_s, group.id.to_s]}.uniq.sort
     add_available_filter 'note', type: :list, values: Product.all.map(&:note).compact.map{|note| note}.uniq.sort
     add_available_filter 'unit', type: :list, values: Product.all.map(&:note).compact.map{|unit| unit}.uniq.sort
     add_available_filter 'deadline', type: :date

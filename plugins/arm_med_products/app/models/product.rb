@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
   unloadable
-  # belongs_to :status, class_name: 'CountProductStatus'
+  belongs_to :status, class_name: 'CountProductStatus'
   # belongs_to :location
-  # belongs_to :products_group
+  belongs_to :group, class_name: 'ProductsGroup'
   include Redmine::SafeAttributes
   DEFAULT_SEARCH_FIELDS = %w( id name note )
 
@@ -13,6 +13,8 @@ class Product < ActiveRecord::Base
       ['name', "`products`.name"],
       ['count', "`products`.count"],
       ['price', "`products`.price"],
+      ['status', "`product_statuses`.name"],
+      ['group', "`products_groups`.name"],
       # ['location', "`locations`.name"],
       # ['status', "`count_product_statuses`.name"],
       ['note', "`products`.note"],
@@ -44,10 +46,10 @@ class Product < ActiveRecord::Base
                   'count',
                   'price',
                   # 'location_id',
-                  # 'status_id',
+                  'status_id',
                   'note',
                   'unit'
-                  # 'products_group_id'
+                  'group_id'
 
 
 end

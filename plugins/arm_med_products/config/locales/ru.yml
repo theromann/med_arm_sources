@@ -6,6 +6,7 @@ ru:
   field_note: Описание
   field_unit: Ед.
   field_status: Статус
+  field_group: Группа
 
   setting_product_list_default_columns: Столбцы, отображаемые в списке карточек по умолчанию
   labels:
@@ -31,3 +32,5 @@ ru:
       status: Статус
       note: Описание
       unit: Ед.
+
+
