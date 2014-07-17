@@ -1,4 +1,7 @@
 ru:
+  label_products: Склад
+  label_product_storages: Места хранения товаров
+
   field_name: Наименование
   field_count: Количество
   field_price: Цена

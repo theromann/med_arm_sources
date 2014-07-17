@@ -1,5 +1,10 @@
 # Plugin's routes
 # See: http://guides.rubyonrails.org/routing.html
-resources :products
+resources :products do
+
+end
+resources :product_storages
 
 resources :product_queries, only: [:new, :create, :destroy]
+
+

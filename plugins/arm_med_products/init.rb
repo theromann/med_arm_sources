@@ -14,6 +14,7 @@ Redmine::Plugin.register :arm_med_products do
       ]
   }, partial: 'settings/products')
 
+  menu :top_menu, :products, {controller: 'products', action: 'index'}, :caption => :label_products
 end
 
 Dir.glob File.expand_path(File.join(__FILE__, '../..')) do |dir|

@@ -1,0 +1,13 @@
+= semantic_form_for [@product, @product_storage] do |f|
+  #consumption_edit_form
+    = f.inputs do
+      = f.input :name
+      -#= f.input :type, as: select
+      -#= f.input :product_id, as: :hidden, input_html: {value: @product.id}
+    = f.actions do
+      .consumption_edit_form_actions
+        = f.action :submit, label: l(:button_save)
+        = f.action :cancel, label: l(:button_cancel)
+
+:javascript
+  $('select.select2').select2({allowClear: true});

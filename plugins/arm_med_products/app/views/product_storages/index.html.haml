@@ -1,0 +1,15 @@
+.contextual
+  = link_to l(:label_product_storage_new), {action: 'new'}, class: 'icon icon-add'
+
+%h2=l(:label_product_storages)
+
+%table.list
+  %thead
+    %tr
+      %th= l(:field_name)
+
+  - @product_storages.each do |source|
+    %tr{class: "#{cycle('odd', 'even')}"}
+      %td
+        ="#{source.name}".html_safe
+
