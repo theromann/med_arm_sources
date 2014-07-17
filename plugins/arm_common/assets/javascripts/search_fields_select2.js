@@ -1,3 +1,3 @@
 jQuery(document).ready(function($) {
-  $('#contact_search_fields').select2();
+  $('#products_search_fields').select2();
 });

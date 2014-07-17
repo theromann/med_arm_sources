@@ -1,0 +1,21 @@
+.contextual
+  = link_to l(:label_product_storage_relation_new), {action: 'new'}, class: 'icon icon-add'
+
+%h2=l(:label_product_storage_relation)
+
+%table.list
+  %thead
+    %tr
+      %th= l(:label_product)
+      %th= l(:label_product_storage)
+      %th= l(:label_count)
+
+  - @relations.each do |source|
+    %tr{class: "#{cycle('odd', 'even')}"}
+      %td
+        ="#{source.product}".html_safe
+      %td
+        ="#{source.product_storage}".html_safe
+      %td
+        ="#{source.count}".html_safe
+
