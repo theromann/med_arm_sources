@@ -1,0 +1,7 @@
+= stylesheet_link_tag :product_storage_relation, plugin: :arm_med_products
+= semantic_form_for @product_storage_relation do |f|
+  #product_storage_relation_edit_form.box
+    = error_messages_for 'product_storage_relation'
+    .product_form
+      = render 'product_storage_relation/form/fields', f: f
+    = f.submit l('product_storage_relation.save'), id: 'form_submit'
