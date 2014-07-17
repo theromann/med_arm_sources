@@ -1,9 +1,14 @@
 class Product < ActiveRecord::Base
   unloadable
+  include Redmine::SafeAttributes
+
   belongs_to :status, class_name: 'CountProductStatus'
   # belongs_to :location
   belongs_to :group, class_name: 'ProductsGroup'
-  include Redmine::SafeAttributes
+
+  has_many :product_storage_relations
+  accepts_nested_attributes_for :product_storage_relations, allow_destroy: true
+
   DEFAULT_SEARCH_FIELDS = %w( id name note product_item )
 
   SORTING_SEARCHING_FIELDS = %w( id name count price status note unit product_item)
