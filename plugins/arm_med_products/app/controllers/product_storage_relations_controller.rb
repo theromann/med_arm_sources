@@ -4,6 +4,10 @@ class ProductStorageRelationsController < ApplicationController
 
   # accept_api_auth :index, :show, :create, :destroy
 
+  def new
+    @relation = ProductStorageRelation.new
+  end
+
   def index
     @relations = ProductStorageRelation.all
   end

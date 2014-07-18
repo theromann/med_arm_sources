@@ -4,6 +4,6 @@
 = javascript_include_tag :product_storage_relations, plugin: :arm_med_products
 #product_storage_relation_form_fields
   -f = nil
-  - semantic_form_for @product_storage_relation do |form| f=form; end
+  - semantic_form_for @relation do |form| f=form; end
   = f.inputs class: 'product_storage_relation-field-group' do
     = render 'product_storage_relations/form/updated_fields', f: f
