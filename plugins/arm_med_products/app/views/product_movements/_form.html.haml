@@ -2,9 +2,9 @@
 = render partial: 'products/form_scripts_and_styles'
 
 #tasks
-  -f=nil
-  - semantic_form_for @movement do |form| f=form; end
-  = f.semantic_fields_for :product_storage_relations do |relation|
-    = render 'product_storage_relation_fields', :f => relation
-  .links
-    = link_to_add_association 'add task', f, :product_storage_relations
+  = semantic_form_for @movement do |f|
+    = f.semantic_fields_for :product_storage_relations do |relation|
+      = render 'product_storage_relation_fields', :f => relation
+    .links
+      = link_to_add_association 'add task', f, :product_storage_relations
+      = f.submit l('qa_actions.save'), id: 'form_submit'
