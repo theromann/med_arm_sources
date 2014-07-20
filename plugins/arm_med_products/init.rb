@@ -36,3 +36,4 @@ Rails.configuration.to_prepare do
 end
 
 require_dependency 'products_group'
+require_dependency 'product_storages_type'

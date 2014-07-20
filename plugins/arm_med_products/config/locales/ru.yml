@@ -1,7 +1,8 @@
 ru:
   label_products: Склад
   label_product_storages: Места хранения товаров
-
+  product_storages_type: Типы "мест хранения"
+  product_status:       Статус товара
   field_name: Наименование
   field_count: Количество
   field_price: Цена

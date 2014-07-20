@@ -2,8 +2,7 @@ class ProductStorage < ActiveRecord::Base
   unloadable
   include Redmine::SubclassFactory
 
-  # belongs_to :type, class_name: "ProductStorageType" # TODO as Enumiration
-
+  belongs_to :type, class_name: "ProductStoragesType"
   private
   # Returns the Subclasses of DocKitSource.  Each Subclass needs to be
   # required in development mode.
