@@ -1,0 +1,8 @@
+.idea/
+.sass-cache/
+log/
+files/
+public/assets/
+private/plugin_assets/
+tmp/
+Gemfile.lock
