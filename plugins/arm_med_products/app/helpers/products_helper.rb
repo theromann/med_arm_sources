@@ -55,7 +55,6 @@ module ProductsHelper
   end
 
   def product_query_links(title, queries)
-    # links to #index on qa_actions/show
     content_tag('h3', h(title)) +
         queries.collect {|query|
           css = 'query'
@@ -72,7 +71,7 @@ module ProductsHelper
     ProductQuery.where(:is_public => true).all(:order => :name)
   end
 
-  def qa_action_heading(product)
+  def product_heading(product)
     h("#{product.name} ##{product.id}" )
   end
 
@@ -82,7 +81,7 @@ module ProductsHelper
     r.to_html
   end
 
-  def css_classes(qa_action)
+  def css_classes(product)
     s = "product"
     s
   end

@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
       @product_count_by_group = @query.product_count_by_group
       respond_to do |format|
         format.html # index.html.haml
-        # format.csv  { send_data(query_to_csv(@products, @query, params), :type => 'text/csv; header=present', :filename => 'qa_actions.csv') }
+        format.csv  { send_data(query_to_csv(@products, @query, params), :type => 'text/csv; header=present', :filename => 'products.csv') }
       end
     else
       @products_count = 0

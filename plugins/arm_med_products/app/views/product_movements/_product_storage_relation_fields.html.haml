@@ -1,9 +1,9 @@
 .nested-fields
-  = f.input :product, input_html: { :class => 'select2 non-select2-search select2_updated_qa_action_field' }
+  = f.input :product, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
   = f.input :time
-  = f.input :product_storage_from, input_html: { :class => 'select2 non-select2-search select2_updated_qa_action_field' }
-  = f.input :product_storage_to, input_html: { :class => 'select2 non-select2-search select2_updated_qa_action_field' }
-  = f.input :maintainer, input_html: { :class => 'select2 non-select2-search select2_updated_qa_action_field' }
+  = f.input :product_storage_from, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
+  = f.input :product_storage_to, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
+  = f.input :maintainer, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
   = f.input :count
   = f.input :note
   = link_to_remove_association l('product_storage_relation.link_to_remove'), f

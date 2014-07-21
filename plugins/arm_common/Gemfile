@@ -6,7 +6,7 @@ gem 'log4r'
 gem 'haml-rails'
 gem 'capybara-select2', group: :test
 gem 'naturally-unicode'
-# gem 'redmine_plugin_asset_pipeline'
+gem 'redmine_plugin_asset_pipeline'
 gem 'therubyracer'
 gem 'activerecord-import', '>= 0.2.0'
 

@@ -53,7 +53,7 @@ class ProductStorageRelationsController < ApplicationController
   end
 
   private
-  def find_qa_action
+  def find_product
     @product = Product.find(params[:product_id])
   rescue ActiveRecord::RecordNotFound
     render_404
