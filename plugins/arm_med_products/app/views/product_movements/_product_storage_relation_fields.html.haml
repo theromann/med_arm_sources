@@ -1,9 +1,23 @@
-.nested-fields
-  = f.input :product, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
-  = f.input :time
-  = f.input :product_storage_from, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
-  = f.input :product_storage_to, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
-  = f.input :maintainer, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
-  = f.input :count
-  = f.input :note
+.nested-fields.one-product-movement
+  .product_movement_header
+    = l(:product_movement_header)
+    = f.text_field :time, size: 14;
+    = calendar_with_time_for 'time'
+  .movement_line
+    .movement_from
+      = f.input :product_storage_from, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
+    .movement_to
+      = f.input :product_storage_to, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
+  .product_movement_line
+    .product
+      = f.input :product, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }, label: :status_id, :include_blank => false
+    .maintainer
+      = f.input :maintainer, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
+    .count
+      = f.input :count
+  .movement_note
+    = f.input :note, :input_html => { :class => 'autogrow', :rows => 2, :cols => 20, :maxlength => 10  }
   = link_to_remove_association l('product_storage_relation.link_to_remove'), f
+
+:javascript
+  $(".product_movement_header").find("input").datetimepicker(datepickerOptions);

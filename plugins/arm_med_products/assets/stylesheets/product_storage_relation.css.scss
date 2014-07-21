@@ -1,0 +1,22 @@
+.select2_updated_product_relation_field {
+    width: 150px;
+}
+
+.nested-fields {
+  &.one-product-movement
+  {
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+  list-style-type: none;
+  .product_movement_header {
+
+  }
+  .movement_line {
+    display: flex;
+  }
+  .product_movement_line {
+    display: flex;
+  }
+
+}
