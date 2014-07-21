@@ -6,3 +6,4 @@ public/assets/
 private/plugin_assets/
 tmp/
 Gemfile.lock
+config/database.yml
