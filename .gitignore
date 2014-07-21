@@ -2,7 +2,6 @@
 .sass-cache/
 log/
 files/
-private/plugin_assets/
 tmp/
 Gemfile.lock
 config/database.yml
