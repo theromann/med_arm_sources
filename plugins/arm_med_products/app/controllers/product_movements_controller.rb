@@ -41,8 +41,8 @@ class ProductMovementsController < ApplicationController
 
 
   def update_product_movement_from_params
-    movement_attributes = params[:product_movement]
-    @movement.safe_attributes = movement_attributes
+    # movement_attributes = params[:product_movement]
+    # @movement.safe_attributes = movement_attributes
     true
   end
 

@@ -57,5 +57,17 @@ ru:
       product_item: Артикул
 
 
+  # validates
+  error_has_different_name: должен иметь отличное наименование
+  activerecord:
+    errors:
+      models:
+        product_storage_relation:
+          attributes:
+            product_storage_to:
+              error_has_different_name: должен иметь отличное наименование
+            count:
+              error_count_more_than_zero: должен быть больше нуля
+
 
 

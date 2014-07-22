@@ -10,6 +10,8 @@ class ProductStorageRelation < ActiveRecord::Base
 
 
   validates_presence_of :product_storage_from, :product_storage_to, :product, :maintainer, :count
+  validate :from_and_to_are_different
+  validate :count_more_than_zero
   # validates_uniqueness_of :product, :scope => :product_storage
 
   attr_protected :product_storage_from, :product_storage_to, :product, :maintainer, :product_movement
@@ -20,6 +22,19 @@ class ProductStorageRelation < ActiveRecord::Base
       if count.blank?
         self.count = 0
       end
+    end
+  end
+
+  def from_and_to_are_different
+    if product_storage_from == product_storage_to
+      errors.add :product_storage_to, :error_has_different_name
+    end
+  end
+
+  def count_more_than_zero
+    if count == 0
+      errors.add :count, :error_count_more_than_zero
+
     end
   end
 
