@@ -18,14 +18,14 @@
 class ProductStoragesGroup < Enumeration
   has_many :product_storages, :foreign_key => 'type_id'
 
-  OptionName = :product_storages_type
+  OptionName = :product_storages_group
 
   def option_name
     OptionName
   end
 
   def objects
-    Product.where(:type_id => self_and_descendants(1).map(&:id))
+    ProductStorage.where(:type_id => self_and_descendants(1).map(&:id))
   end
 
   def objects_count

@@ -2,7 +2,11 @@
   = stylesheet_link_tag :product_settings, :plugin => :arm_med_products
   = javascript_include_tag :product_settings, plugin: :arm_med_products
 
-%fieldset.box.label-without-negative-margin
-  %legend= l(:setting_product_list_default_columns)
-  = render_query_columns_selection(ProductQuery.new(column_names: Setting.plugin_arm_med_products['product_list_default_columns']),
-      name: 'settings[product_list_default_columns]')
+- products_tabs = [{:name => 'products', :partial => 'settings/products/products', :label => :label_products_settings},
+                    {:name => 'product_storages', :partial => 'settings/products/product_storages', :label => :label_product_storages_settings}]
+
+= render_tabs products_tabs
+%hr
+= render partial: 'settings/products/addition_settings'
+
+- html_title(l(:label_settings), l(:label_products_plural))

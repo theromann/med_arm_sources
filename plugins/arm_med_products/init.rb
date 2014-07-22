@@ -15,6 +15,10 @@ Redmine::Plugin.register :arm_med_products do
   }, partial: 'settings/products')
 
   menu :top_menu, :products, {controller: 'products', action: 'index'}, :caption => :label_products
+
+  menu :admin_menu, :products, {:controller => 'settings', :action => 'plugin', :id => "arm_med_products"}, :caption => :products_title
+
+
 end
 
 Dir.glob File.expand_path(File.join(__FILE__, '../..')) do |dir|
@@ -36,5 +40,6 @@ Rails.configuration.to_prepare do
   end
 end
 
+
 require_dependency 'products_group'
-require_dependency 'product_storages_type'
+require_dependency 'product_storages_group'

@@ -1,0 +1,26 @@
+.contextual
+  = link_to l(:label_product_storage_groups_new), {controller: 'product_storages_groups', action: 'new'}, class: 'icon icon-add'
+
+%h2=l(:label_product_storages_groups)
+
+%table.list
+  %thead
+    %tr
+      %th= l(:field_name)
+      %th= l(:field_is_default)
+      %th= l(:field_active)
+      %th
+
+  - @product_storages_groups = ProductStoragesGroup.all
+
+  - @product_storages_groups.each do |source|
+    %tr{class: "#{cycle('odd', 'even')}"}
+      %td.name
+        ="#{source.name}".html_safe
+      %td.tick
+        = checked_image source.is_default?
+      %td.tick
+        = checked_image source.active?
+      %td.buttons
+        = delete_link product_storages_group_path(source)
+

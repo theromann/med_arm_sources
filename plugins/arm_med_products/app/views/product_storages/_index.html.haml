@@ -1,0 +1,22 @@
+.contextual
+  = link_to l(:label_product_storage_new), {controller: 'product_storages', action: 'new'}, class: 'icon icon-add'
+
+%h2=l(:label_product_storages)
+
+%table.list
+  %thead
+    %tr
+      %th= l(:field_name)
+      %th= l(:field_type)
+      %th
+
+  - @product_storages = ProductStorage.all
+
+  - @product_storages.each do |source|
+    %tr{class: "#{cycle('odd', 'even')}"}
+      %td.name
+        ="#{source.name}".html_safe
+      %td.tick
+        ="#{source.type.name}".html_safe if source.type.present?
+      %td.buttons
+        = delete_link product_storage_path(source)

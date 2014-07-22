@@ -1,7 +1,13 @@
 ru:
   label_products: Склад
   label_product_storages: Места хранения товаров
-  product_storages_type: Типы "мест хранения"
+  label_product_storage: Место хранения
+  label_products_groups: Группы товаров
+
+  product_storages_group: Типы "мест хранения"
+  label_product_storages_groups: Типы "мест хранения"
+
+  label_product_storage_groups_new: Добавить новый тип мест хранения
   product_status:       Статус товара
   field_name: Наименование
   field_count: Количество
@@ -29,10 +35,11 @@ ru:
     new:    Cоздать новый товар
     edit:   Редактировать товар
     destroy: Удалить товар
-
+  label_products_groups_new: Добавить новую группу товаров
 
   products_groups: Группы товаров
-
+  products_groups:
+    plural_label: Группы товаров
   product_movement:
     index:  Перемещение товаров
     save:   Сохранить
@@ -41,7 +48,10 @@ ru:
   product_storage_relation:
     link_to_remove:   Удалить это перемещение
     add: Добавить перемещение
+  label_product_storage_new: Добавить новое Место хранения
 
+  product_storages_group:
+    plural_label: Типы мест хранения
 
   search: Поиск
   search_fields_label: Поля для поиска
@@ -69,5 +79,8 @@ ru:
             count:
               error_count_more_than_zero: должен быть больше нуля
 
+  #settings
+  label_product_storages_settings: Настройки места хранения
+  label_products_settings: Настройки товара
 
 

@@ -20,7 +20,7 @@ class ProductStoragesController < ApplicationController
     respond_to do |format|
       if @product_storage.save
         #TODO: сделать всплывающее окно при создании нового потребления
-        format.html { redirect_to product_storages_path, notice:l(:notice_successful_create) }
+        format.html { redirect_to '/settings/plugin/arm_med_products?tab=product_storages', notice:l(:notice_successful_create) }
         # format.html { redirect_to tabs_contact_path(@contact.id, :consumptions) }
         format.json { render json: @product_storage, status: :created, location: @product_storage }
       else
@@ -34,7 +34,7 @@ class ProductStoragesController < ApplicationController
     @product_storage = ProductStorage.find(params[:id])
     respond_to do |format|
       if @product_storage.update_attributes(params[:product_storage])
-        format.html { redirect_to product_product_storages_path, notice:l(:notice_successful_create) }
+        format.html { redirect_to '/settings/plugin/arm_med_products?tab=product_storages', notice:l(:notice_successful_create) }
         # format.html { redirect_to tabs_contact_path(@contact.id, :consumptions) }
         format.json { head :no_content }
       else
@@ -48,7 +48,7 @@ class ProductStoragesController < ApplicationController
     @product_storage = ProductStorage.find(params[:id])
     @product_storage.destroy
     respond_to do |format|
-      format.html { redirect_to product_product_storages_path }
+      format.html { redirect_to '/settings/plugin/arm_med_products?tab=product_storages' }
       format.json { head :no_content }
     end
   end
