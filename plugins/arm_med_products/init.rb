@@ -19,6 +19,7 @@ end
 
 Dir.glob File.expand_path(File.join(__FILE__, '../..')) do |dir|
   require "#{dir}/arm_common/app/inputs/products_select2_input"
+  require "#{dir}/arm_common/app/inputs/date_with_calendar_input"
 end
 
 Rails.configuration.to_prepare do

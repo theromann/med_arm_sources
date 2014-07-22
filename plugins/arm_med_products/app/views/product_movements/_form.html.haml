@@ -10,5 +10,5 @@
     = f.semantic_fields_for :product_storage_relations do |relation|
       = render 'product_storage_relation_fields', :f => relation
     .links
-      = link_to_add_association 'add task', f, :product_storage_relations
-      = f.submit l('qa_actions.save'), id: 'form_submit'
+      = link_to_add_association l('product_storage_relation.add'), f, :product_storage_relations
+      = f.submit l('product_movement.save'), id: 'form_submit'

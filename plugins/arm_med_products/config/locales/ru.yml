@@ -12,6 +12,12 @@ ru:
   field_unit: Ед.
   field_status: Статус
   field_group: Группа
+  field_product_storage_from: Откуда
+  field_product_storage_to: Куда
+  field_product: Товар
+  field_maintainer: Ответственный
+  field_time: Дата перемещения
+
 
   setting_product_list_default_columns: Столбцы, отображаемые в списке карточек по умолчанию
   labels:
@@ -24,7 +30,18 @@ ru:
     edit:   Редактировать товар
     destroy: Удалить товар
 
+
   products_groups: Группы товаров
+
+  product_movement:
+    index:  Перемещение товаров
+    save:   Сохранить
+  product_movement_header:  "Перемещение от:"
+
+  product_storage_relation:
+    link_to_remove:   Удалить это перемещение
+    add: Добавить перемещение
+
 
   search: Поиск
   search_fields_label: Поля для поиска
@@ -38,5 +55,7 @@ ru:
       note: Описание
       unit: Ед.
       product_item: Артикул
+
+
 
 

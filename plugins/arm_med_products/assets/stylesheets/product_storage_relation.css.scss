@@ -3,6 +3,11 @@
 }
 
 .nested-fields {
+  label {
+    abbr {
+      color: #b00;
+    }
+  }
   &.one-product-movement
   {
     padding-bottom: 10px;
@@ -10,13 +15,75 @@
   }
   list-style-type: none;
   .product_movement_header {
-
+    display:  flex;
+    padding-bottom: 30px;
+    li {
+      label {
+        float: left;
+        width: 100px;
+      }
+    }
   }
   .movement_line {
     display: flex;
+    padding-bottom: 15px;
+    .movement_from{
+      li {
+        label {
+          float: left;
+          width: 100px;
+        }
+      }
+    }
+    .movement_to {
+      padding-left: 20px;
+      li {
+        label {
+          float: left;
+          width: 100px;
+        }
+      }
+    }
   }
   .product_movement_line {
     display: flex;
+    padding-bottom: 15px;
+    .product{
+      li {
+        label {
+          float: left;
+          width: 100px;
+        }
+      }
+    }
+    .maintainer {
+      padding-left: 20px;
+      li {
+        label {
+          float: left;
+          width: 100px;
+        }
+      }
+    }
+    .count {
+      padding-left: 20px;
+      input {
+        width: 40px;
+      }
+      li {
+        label {
+          float: left;
+          width: 100px;
+        }
+      }
+    }
   }
-
+  .movement_note {
+    li {
+      label {
+        float: left;
+        width: 100px;
+      }
+    }
+  }
 }
