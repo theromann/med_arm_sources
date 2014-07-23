@@ -1,9 +1,41 @@
 @import "compass/css3";
 
-.product_form {
-  width: 100%;
-  border-collapse: collapse;
+.product-form {
+  width: 50%;
+//  border-collapse: collapse;
+  list-style-type: none;
 
+
+  .product-field{
+    padding-bottom: 10px;
+    li {
+      list-style-type: none;
+      label {
+        float: left;
+        width: 100px;
+      }
+    }
+  }
+  .name {
+
+  }
+  .unit {
+
+  }
+  .group {
+
+  }
+  .max-count {
+
+  }
+  .count {
+
+  }
+  .note {
+
+  }
+
+// старое надо удалить
   .qa-field-group {
     margin: 0px;
     padding: 0px;

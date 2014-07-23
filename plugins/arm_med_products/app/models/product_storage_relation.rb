@@ -7,8 +7,6 @@ class ProductStorageRelation < ActiveRecord::Base
   belongs_to :maintainer, class_name: "User"
   belongs_to :product_movement
 
-
-
   validates_presence_of :product_storage_from, :product_storage_to, :product, :maintainer, :count
   validate :from_and_to_are_different
   validate :count_more_than_zero

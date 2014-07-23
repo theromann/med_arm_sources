@@ -35,6 +35,8 @@ ru:
     new:    Cоздать новый товар
     edit:   Редактировать товар
     destroy: Удалить товар
+    index:  Товары
+    save: Сохранить
   label_products_groups_new: Добавить новую группу товаров
 
   products_groups: Группы товаров
