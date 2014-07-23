@@ -1,0 +1,8 @@
+%table
+  %thead
+    %tr
+      %th &nbsp;
+      %th= l('products.groups')
+  %tbody
+    = render @products_groups, checked_groups: params[:products_group_ids].to_a
+= submit_tag l(:button_apply), form: 'search-form'

@@ -13,13 +13,13 @@
   = javascript_include_tag :products_list, plugin: :arm_med_products
 - rewrite_title(l('labels.products'))
 - content_for :sidebar do
-  = render 'sidebar'
+  = render 'group_filters'
 
 .qa-action-top-elements
   .contextual
     = link_to l('products.new'), new_product_path, class: 'icon icon-add'
 
-= form_tag({ controller: 'products', action: 'index' }, method: :get, id: 'query_form') do
+= form_tag({ controller: 'products', action: 'index' }, method: :get, id: 'search-form') do
   = hidden_field_tag 'set_filter', '0'
   -##query_form_content.hide-when-print
   -#  filters here

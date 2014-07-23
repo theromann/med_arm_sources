@@ -1,0 +1,14 @@
+.issue
+  %table.attributes
+    %tbody
+      %tr
+        %td{ colspan: '2'}
+          .subject
+            %div.product-title
+              %h3
+                = @product.name
+  %hr
+  %h3
+    = label_tag l('products.description')
+  %div
+    = @product.note

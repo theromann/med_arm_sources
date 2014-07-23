@@ -37,7 +37,17 @@ ru:
     destroy: Удалить товар
     index:  Товары
     save: Сохранить
+    description: Описание
+    groups: Группы товаров
   label_products_groups_new: Добавить новую группу товаров
+
+  label_product: Товар
+  label_product_info_card: Карточка товара
+
+  # product tab
+  label_product_analogs: Аналоги
+  label_product_additions: Дополнительно
+
 
   products_groups: Группы товаров
   products_groups:

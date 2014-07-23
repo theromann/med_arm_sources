@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   prepend_before_filter :new_product, only: [:new, :create]
   before_filter :find_product, only: [:show, :edit, :update, :destroy]
   before_filter :send_paths_to_js, only: [:new, :edit, :create, :update]
+  before_filter :find_group_resources, only: [:index]
 
   helper :sort
   include SortHelper
@@ -86,6 +87,13 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @product.destroy
+
+    respond_to do |format|
+      format.html { redirect_to products_path }
+      format.js
+      format.api  { render_api_ok }
+    end
   end
 
   private
@@ -121,7 +129,7 @@ class ProductsController < ApplicationController
   def products_search_params
     {
         include: [
-            # :location, :status
+            :location#, :status
         ],
         order: sort_order,
         conditions: @conditions,
@@ -143,6 +151,10 @@ class ProductsController < ApplicationController
     action_attributes = params[:product]
     @product.safe_attributes = action_attributes
     true
+  end
+
+  def find_group_resources
+    @products_groups = ProductsGroup.scoped
   end
 
 

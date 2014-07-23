@@ -1,0 +1,11 @@
+
+- content_for :sidebar do
+  = render partial: 'show_sidebar'
+
+
+-rewrite_title(l(:label_product))
+-add_subtitle_on_header(l(:label_product_info_card))
+= render partial: 'action_menu'
+.contextual
+= render 'info'
+= render_tabs product_info_tabs

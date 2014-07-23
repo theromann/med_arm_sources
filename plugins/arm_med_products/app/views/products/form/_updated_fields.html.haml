@@ -9,8 +9,9 @@
     .group.product-field
       = f.input :group, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
     .max-count.product-field
+      = f.input :max_count, :input_html => { :size => 2}
     .count.product-field
-      = f.input :count, :input_html => { :size => 10 }
+      -#= f.input :count, :input_html => { :size => 10 }
     -#= f.input :product_item
     -#= f.input :price
     -#= f.input :status, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' } # статус должен быть расчетным

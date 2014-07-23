@@ -62,7 +62,7 @@ class ProductQuery < Query
     end.join(' AND ')
     Product.all(
         # include: ([:location, :status] + (options[:include] || [])).uniq,
-        include: ([] + (options[:include] || [])).uniq,
+        include: ([:location] + (options[:include] || [])).uniq,
         conditions: conditions,
         order: order_option,
         joins: joins_for_order_statement(order_option.join(',')),

@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   include Redmine::SafeAttributes
 
   belongs_to :status, class_name: 'CountProductStatus'
-  # belongs_to :location
+  belongs_to :location, class_name: 'ProductStorage'
   belongs_to :group, class_name: 'ProductsGroup'
 
   has_many :product_storage_relations
@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
 
   DEFAULT_SEARCH_FIELDS = %w( id name note product_item )
 
-  SORTING_SEARCHING_FIELDS = %w( id name count price status note unit product_item)
+  SORTING_SEARCHING_FIELDS = %w( id name count status note unit product_item)
 
   SEARCH_FIELDS = [
       ['id', "`products`.id"],
@@ -21,7 +21,7 @@ class Product < ActiveRecord::Base
       ['price', "`products`.price"],
       ['status', "`product_statuses`.name"],
       ['group', "`products_groups`.name"],
-      # ['location', "`locations`.name"],
+      ['location', "`locations`.name"],
       # ['status', "`count_product_statuses`.name"],
       ['note', "`products`.note"],
       ['unit', "`products`.unit"]
@@ -51,7 +51,7 @@ class Product < ActiveRecord::Base
   safe_attributes 'name',
                   'count',
                   'price',
-                  # 'location_id',
+                  'location_id',
                   'status_id',
                   'note',
                   'unit',

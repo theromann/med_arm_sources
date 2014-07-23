@@ -1,7 +1,5 @@
 = stylesheet_link_tag :products, plugin: :arm_med_products
 = semantic_form_for @product do |f|
-  #product_edit_form.box
-    = error_messages_for 'product'
-    .product_form
-      = render 'products/form/fields', f: f
-    = f.submit l('products.save'), id: 'form_submit'
+  = error_messages_for 'product'
+  = render 'products/form/fields', f: f
+  = f.submit l('products.save'), id: 'form_submit'

@@ -40,6 +40,11 @@ module ProductsHelper
     end
   end
 
+  def product_info_tabs
+    %w{analogs additions}.map do |tab|
+      {name: tab, partial: "products/tabs/#{tab}", label: :"label_product_#{tab}"}
+    end
+  end
 
   def link_to_query_delete(query)
     link_to_delete ||= ""
