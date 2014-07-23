@@ -9,8 +9,9 @@ Redmine::Plugin.register :arm_med_products do
   settings( default: {
       product_list_default_columns: [
           'name',
+          'group',
           'count',
-          'price'
+          'status'
       ]
   }, partial: 'settings/products')
 
@@ -43,3 +44,4 @@ end
 
 require_dependency 'products_group'
 require_dependency 'product_storages_group'
+require_dependency 'product_cancellations_reason'

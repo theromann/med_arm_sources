@@ -1,0 +1,12 @@
+= stylesheet_link_tag :products, plugin: :arm_med_products
+
+= semantic_form_for @product do |f|
+  = error_messages_for 'product'
+  .product-receipt-one-form
+    = f.inputs do
+      .name.product-field
+        = f.input :name
+      .count.product-field
+        = f.input :count, :input_html => { :size => 10 }
+      = hidden_field_tag 'receipt_one_form', true
+  = f.submit l('products.save'), id: 'form_submit'

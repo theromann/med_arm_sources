@@ -1,7 +1,9 @@
 # Plugin's routes
 # See: http://guides.rubyonrails.org/routing.html
 resources :products do
-
+  member do
+    get 'receipt_one'
+  end
 end
 resources :product_storages
 

@@ -18,6 +18,7 @@
 .qa-action-top-elements
   .contextual
     = link_to l('products.new'), new_product_path, class: 'icon icon-add'
+    = link_to l('product_movement.new'), new_product_movement_path, class: 'icon icon-add'
 
 = form_tag({ controller: 'products', action: 'index' }, method: :get, id: 'search-form') do
   = hidden_field_tag 'set_filter', '0'

@@ -33,3 +33,5 @@
                 %tr{class: "#{current_cycle}"}
                   %td{colspan: "#{@query.inline_columns.size + 1}", class: "#{column.css_classes}"}
                     = "#{content_tag(:span, column.caption, class: 'block-info-caption')}: #{text}".html_safe
+            %td.links
+              = link_to l(:label_product_storage_relation_new), {action: 'receipt_one', id: product.id}, class: 'icon icon-add', remote: true

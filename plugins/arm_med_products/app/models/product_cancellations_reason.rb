@@ -15,17 +15,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-class ProductCancellationReason < Enumeration
-  has_many :products, :foreign_key => 'group_id'
+class ProductCancellationsReason < Enumeration
+  has_many :product_cancellations, :foreign_key => 'reason_id'
 
-  OptionName = :products_groups
+  OptionName = :product_cancellations_reason
 
   def option_name
     OptionName
   end
 
   def objects
-    Product.where(:group_id => self_and_descendants(1).map(&:id))
+    ProductCancellation.where(:reason_id => self_and_descendants(1).map(&:id))
   end
 
   def objects_count
@@ -33,6 +33,6 @@ class ProductCancellationReason < Enumeration
   end
 
   def transfer_relations(to)
-    objects.update_all(:group_id => to.id)
+    objects.update_all(:reason_id => to.id)
   end
 end

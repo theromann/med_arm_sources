@@ -55,6 +55,7 @@ ru:
   product_movement:
     index:  Перемещение товаров
     save:   Сохранить
+    new:    Переместить товар
   product_movement_header:  "Перемещение от:"
 
   product_storage_relation:

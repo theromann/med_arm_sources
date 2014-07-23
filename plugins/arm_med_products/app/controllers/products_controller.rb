@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   unloadable
   prepend_before_filter :new_product, only: [:new, :create]
-  before_filter :find_product, only: [:show, :edit, :update, :destroy]
+  before_filter :find_product, only: [:show, :edit, :update, :destroy, :receipt_one]
   before_filter :send_paths_to_js, only: [:new, :edit, :create, :update]
   before_filter :find_group_resources, only: [:index]
 
@@ -77,8 +77,12 @@ class ProductsController < ApplicationController
     return unless update_product_from_params
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product,notice:l(:notice_successful_update) }
-        format.json { head :no_content }
+        if params[:receipt_one_form].present?
+          format.html { redirect_to products_path ,notice:l(:notice_successful_update) }
+        else
+          format.html { redirect_to @product,notice:l(:notice_successful_update) }
+          format.json { head :no_content }
+        end
       else
         format.html { render action: 'edit' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -94,6 +98,14 @@ class ProductsController < ApplicationController
       format.js
       format.api  { render_api_ok }
     end
+  end
+
+  def receipt_one
+
+  end
+
+  def create_receipt_one
+
   end
 
   private
