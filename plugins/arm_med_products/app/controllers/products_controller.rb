@@ -61,7 +61,7 @@ class ProductsController < ApplicationController
   def create
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product,notice:l(:notice_successful_create)}
+        format.html { redirect_to products_path,notice:l(:notice_successful_create)} # пока редирект на Index
         format.json { render json: @product, status: :created, location: @product }
       else
         format.html { render action: 'new' }
@@ -77,12 +77,12 @@ class ProductsController < ApplicationController
     return unless update_product_from_params
     respond_to do |format|
       if @product.save
-        if params[:receipt_one_form].present?
+        # if params[:receipt_one_form].present?
           format.html { redirect_to products_path ,notice:l(:notice_successful_update) }
-        else
-          format.html { redirect_to @product,notice:l(:notice_successful_update) }
-          format.json { head :no_content }
-        end
+        # else
+        #   format.html { redirect_to @product,notice:l(:notice_successful_update) }
+        #   format.json { head :no_content }
+        # end
       else
         format.html { render action: 'edit' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -101,11 +101,7 @@ class ProductsController < ApplicationController
   end
 
   def receipt_one
-
-  end
-
-  def create_receipt_one
-
+    puts 'sssss'
   end
 
   private

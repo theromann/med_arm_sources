@@ -7,11 +7,14 @@ class Product < ActiveRecord::Base
   belongs_to :group, class_name: 'ProductsGroup'
 
   has_many :product_storage_relations
+
   accepts_nested_attributes_for :product_storage_relations, allow_destroy: true
+
+  validate :must_be_location_if_count_more_then_zero
 
   DEFAULT_SEARCH_FIELDS = %w( id name note product_item )
 
-  SORTING_SEARCHING_FIELDS = %w( id name count status note unit product_item)
+  SORTING_SEARCHING_FIELDS = %w( id name count price status note unit product_item)
 
   SEARCH_FIELDS = [
       ['id', "`products`.id"],
@@ -21,7 +24,7 @@ class Product < ActiveRecord::Base
       ['price', "`products`.price"],
       ['status', "`product_statuses`.name"],
       ['group', "`products_groups`.name"],
-      ['location', "`locations`.name"],
+      # ['location', "`locations`.name"],
       # ['status', "`count_product_statuses`.name"],
       ['note', "`products`.note"],
       ['unit', "`products`.unit"]
@@ -52,11 +55,31 @@ class Product < ActiveRecord::Base
                   'count',
                   'price',
                   'location_id',
-                  'status_id',
+                  # 'status_id',
                   'note',
                   'unit',
                   'group_id',
-                  'product_item'
+                  'product_item',
+                  'to_receipt'
 
 
+  def to_receipt
+  end
+
+  def to_receipt=(count)
+    self.count ||= 0
+    self.count += count.to_i
+  end
+
+  def storages
+    ProductStorage.where(id: (ProductStorageRelation.where(product_id: 1).pluck(:product_storage_to_id)))
+  end
+
+  private
+
+  def must_be_location_if_count_more_then_zero
+    if count.present? and location.nil?
+      errors.add :base, :error_must_be_location_if_count_more_then_zero
+    end
+  end
 end

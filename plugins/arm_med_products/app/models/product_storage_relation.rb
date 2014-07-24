@@ -11,6 +11,10 @@ class ProductStorageRelation < ActiveRecord::Base
   validate :from_and_to_are_different
   validate :count_more_than_zero
   # validates_uniqueness_of :product, :scope => :product_storage
+  validate :cannot_move_from_not_existing_storage
+  validate :cannot_move_from_empty_storage
+  validate :cannot_move_more_then_exist_in_storage
+
 
   attr_protected :product_storage_from, :product_storage_to, :product, :maintainer, :product_movement
 
@@ -32,7 +36,24 @@ class ProductStorageRelation < ActiveRecord::Base
   def count_more_than_zero
     if count == 0
       errors.add :count, :error_count_more_than_zero
+    end
+  end
 
+  def cannot_move_from_not_existing_storage
+    unless product.storages.include?(product_storage_from)
+      errors.add :product_storage_from, :error_cannot_move_from_not_existing_storage
+    end
+  end
+
+  def cannot_move_from_empty_storage
+    if product_storage_from.empty?
+      errors.add :product_storage_from, :error_cannot_move_from_empty_storage
+    end
+  end
+
+  def cannot_move_more_then_exist_in_storage
+    if !product_storage_from.empty? and product_storage_from.product_count <= count
+      errors.add :product_storage_from, :error_cannot_move_more_then_exist_in_storage
     end
   end
 

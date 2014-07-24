@@ -31,6 +31,7 @@ ru:
 
   link_to_show_all: показать все
 
+  label_product_storage_relation_new: Добавить товар
   products:
     new:    Cоздать новый товар
     edit:   Редактировать товар
