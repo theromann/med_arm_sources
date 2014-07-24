@@ -1,3 +1,6 @@
+UpdateStorageFromError = Class.new(Exception)
+
+
 class ProductStorageRelation < ActiveRecord::Base
   # Class used to represent the relations of an qa_issue
 
@@ -66,28 +69,36 @@ class ProductStorageRelation < ActiveRecord::Base
 
   private
   def storage_from_id_params
-    {product_id: product, storage_id: product_storage_from_id}
+    {product_id: product.id, storage_id: product_storage_from_id}
   end
 
   def storage_to_id_params
-    {product_id: product, storage_id: product_storage_to_id}
+    {product_id: product.id, storage_id: product_storage_to_id}
   end
 
   def find_storage_from
-    @storage_from = StorageProductCount.find_or_initialize_by(storage_from_id_params)
+    @storage_from = StorageProductCount.where(storage_from_id_params)
   end
 
   def find_storage_to
-    @storage_to = StorageProductCount.find_or_initialize_by(storage_to_id_params)
+    @storage_to = StorageProductCount.where(storage_to_id_params)
   end
 
   def update_storage_from
-    find_storage_from.count -= count
-    find_storage_from.save
+    store = find_storage_from.first
+    if store.nil?
+      raise UpdateStorageFromError
+    end
+    store.count -= count
+    store.save
   end
 
   def update_storage_to
-    find_storage_to.count += count
-    find_storage_to.save
+    store = find_storage_to.first
+    if store.nil?
+      store = StorageProductCount.create(storage_to_id_params.merge(count: 0))
+    end
+    store.count += count
+    store.save
   end
 end
