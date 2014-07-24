@@ -15,6 +15,7 @@ class ProductStorageRelation < ActiveRecord::Base
   validate :cannot_move_from_empty_storage
   validate :cannot_move_more_then_exist_in_storage
 
+  after_save :update_count_in_storage
 
   attr_protected :product_storage_from, :product_storage_to, :product, :maintainer, :product_movement
 
@@ -57,4 +58,36 @@ class ProductStorageRelation < ActiveRecord::Base
     end
   end
 
+  # callbacks
+  def update_count_in_storage
+    update_storage_from
+    update_storage_to
+  end
+
+  private
+  def storage_from_id_params
+    {product_id: product, storage_id: product_storage_from_id}
+  end
+
+  def storage_to_id_params
+    {product_id: product, storage_id: product_storage_to_id}
+  end
+
+  def find_storage_from
+    @storage_from = StorageProductCount.find_or_initialize_by(storage_from_id_params)
+  end
+
+  def find_storage_to
+    @storage_to = StorageProductCount.find_or_initialize_by(storage_to_id_params)
+  end
+
+  def update_storage_from
+    find_storage_from.count -= count
+    find_storage_from.save
+  end
+
+  def update_storage_to
+    find_storage_to.count += count
+    find_storage_to.save
+  end
 end

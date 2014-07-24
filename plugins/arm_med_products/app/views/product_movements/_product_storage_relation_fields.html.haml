@@ -16,19 +16,3 @@
   .movement_note
     = f.input :note, :input_html => { :class => 'autogrow', :rows => 2, :cols => 69 }
   = link_to_remove_association l('product_storage_relation.link_to_remove'), f
-
-:javascript
-
-  $(".product_movement_header").find("input").datetimepicker({
-      dateFormat: 'dd.mm.yy',
-      altTimeFormat: 'HH:mm',
-      firstDay: 1, showTime: false,
-      hourText: "tunti",
-      minuteText: "min",
-      altField: "#altField",
-      altFieldTimeOnly: false,
-      showButtonPanel: false,
-      hour: #{Time.now.hour},
-      minute: #{Time.now.min}, // default time
-      defaultDate: 0,
-  });

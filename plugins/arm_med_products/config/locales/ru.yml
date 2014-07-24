@@ -92,7 +92,9 @@ ru:
               error_has_different_name: должен иметь отличное наименование
             count:
               error_count_more_than_zero: должен быть больше нуля
-
+            product_storage_from:
+              error_cannot_move_from_not_existing_storage: Данного продукта нет в данном месторасположении
+              error_cannot_move_more_then_exist_in_storage: Данного продукта в данном месте меньше чем вы хотите перенести
   #settings
   label_product_storages_settings: Настройки места хранения
   label_products_settings: Настройки товара

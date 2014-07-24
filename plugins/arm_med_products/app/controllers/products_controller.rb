@@ -101,7 +101,6 @@ class ProductsController < ApplicationController
   end
 
   def receipt_one
-    puts 'sssss'
   end
 
   private

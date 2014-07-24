@@ -6,11 +6,15 @@ class Product < ActiveRecord::Base
   belongs_to :location, class_name: 'ProductStorage'
   belongs_to :group, class_name: 'ProductsGroup'
 
-  has_many :product_storage_relations
+  # has_many :product_storage_relations
+  has_many :storages, class_name: 'ProductStorage'
 
-  accepts_nested_attributes_for :product_storage_relations, allow_destroy: true
+  # accepts_nested_attributes_for :product_storage_relations, allow_destroy: true
 
+  validates_presence_of :location, :name
   validate :must_be_location_if_count_more_then_zero
+
+  after_save :create_storage_product_count
 
   DEFAULT_SEARCH_FIELDS = %w( id name note product_item )
 
@@ -71,8 +75,8 @@ class Product < ActiveRecord::Base
     self.count += count.to_i
   end
 
-  def storages
-    ProductStorage.where(id: (ProductStorageRelation.where(product_id: 1).pluck(:product_storage_to_id)))
+  def create_storage_product_count
+    StorageProductCount.create({product_id: self.id, storage_id: location_id})
   end
 
   private
