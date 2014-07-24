@@ -7,6 +7,6 @@
       .name.product-field
         = @product.name
       .count.product-field
-        = f.input :to_receipt, :input_html => { :size => 10 }
+        = f.input :count, :input_html => { :size => 10 }
       = hidden_field_tag 'receipt_one_form', true
   = f.submit l('products.save'), id: 'form_submit'

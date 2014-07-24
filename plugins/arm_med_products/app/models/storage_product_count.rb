@@ -1,7 +1,7 @@
 class StorageProductCount < ActiveRecord::Base
   unloadable
 
-  attr_accessor :product, :storage, :count
+  attr_accessor :product, :storage
 
   belongs_to :product, dependent: :destroy
   belongs_to :storage, class_name: "ProductStorage", dependent: :destroy

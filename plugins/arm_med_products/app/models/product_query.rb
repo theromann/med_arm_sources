@@ -25,7 +25,7 @@ class ProductQuery < Query
       ProductQueryColumn.new(:id, sortable: "#{Product.table_name}.id", default_order: 'desc', name: 'id', caption: '#', frozen: true),
       ProductQueryColumn.new(:name, sortable: "#{Product.table_name}.name", default_order: 'desc'),
       ProductQueryColumn.new(:price, sortable: "#{Product.table_name}.price", default_order: 'desc'),
-      ProductQueryColumn.new(:count, sortable: "#{Product.table_name}.count", default_order: 'desc'),
+      ProductQueryColumn.new(:count),
       # ProductQueryColumn.new(:location, sortable: "#{Location.table_name}.name", default_order: 'desc', groupable: true),
       ProductQueryColumn.new(:status, sortable: "#{ProductStatus.table_name}.name", default_order: 'desc', groupable: true),
       ProductQueryColumn.new(:group, sortable: "#{ProductsGroup.table_name}.name", default_order: 'desc', groupable: true),
