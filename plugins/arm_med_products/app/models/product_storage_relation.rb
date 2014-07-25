@@ -9,10 +9,12 @@ class ProductStorageRelation < ActiveRecord::Base
   belongs_to :product
   belongs_to :maintainer, class_name: "User"
   belongs_to :product_movement
+  belongs_to :product_depreciation
 
-  validates_presence_of :product_storage_from, :product_storage_to, :product, :maintainer, :count
-  validate :from_and_to_are_different
-  validate :count_more_than_zero
+  validates_presence_of :product_storage_from, :product, :maintainer, :count
+  validates_presence_of  :product_storage_to, :unless => :deprecation?
+  validate :from_and_to_are_different, :unless => :deprecation?
+  validate :count_more_than_zero, :unless => :deprecation?
   # validates_uniqueness_of :product, :scope => :product_storage
   validate :cannot_move_from_not_existing_storage
   validate :cannot_move_from_empty_storage
@@ -20,7 +22,9 @@ class ProductStorageRelation < ActiveRecord::Base
 
   after_save :update_count_in_storage
 
-  attr_protected :product_storage_from, :product_storage_to, :product, :maintainer, :product_movement
+  attr_protected :product_storage_from, :product_storage_to, :product, :maintainer, :product_movement, :product_depreciation
+
+  # TODO: скопе movements и depreciations
 
   def initialize(attributes=nil, *args)
     super
@@ -28,6 +32,14 @@ class ProductStorageRelation < ActiveRecord::Base
       if count.blank?
         self.count = 0
       end
+    end
+  end
+
+  def deprecation?
+    if is_depreciation.present?
+      true
+    else
+      false
     end
   end
 
@@ -63,8 +75,8 @@ class ProductStorageRelation < ActiveRecord::Base
 
   # callbacks
   def update_count_in_storage
-    update_storage_from
-    update_storage_to
+    update_storage_from if self.product_storage_from_id.present?
+    update_storage_to if self.product_storage_to_id.present?
   end
 
   private

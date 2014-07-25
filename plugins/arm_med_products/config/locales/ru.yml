@@ -59,6 +59,11 @@ ru:
     new:    Переместить товар
   product_movement_header:  "Перемещение от:"
 
+  product_deprecation:
+    save: Сохранить
+
+  label_cancellation_product: Списать товар
+
   product_storage_relation:
     link_to_remove:   Удалить это перемещение
     add: Добавить перемещение

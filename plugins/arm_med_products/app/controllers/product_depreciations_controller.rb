@@ -17,14 +17,10 @@ class ProductDepreciationsController < ApplicationController
 
   def create
     return unless update_product_movement_from_params
-    respond_to do |format|
-      if @depreciation.save
-        format.html { redirect_to @depreciation,notice:l(:notice_successful_create)}
-        format.json { render json: @depreciation, status: :created, location: @depreciation }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @depreciation.errors, status: :unprocessable_entity }
-      end
+    if @depreciation.save
+      redirect_to products_path,notice:l(:notice_successful_create)
+    else
+      redirect_to products_path
     end
   end
 

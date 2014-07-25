@@ -3,7 +3,6 @@
 resources :products do
   member do
     get 'receipt_one'
-
   end
 end
 resources :product_storages
@@ -15,7 +14,7 @@ resources :product_storage_relations
 resources :product_movements
 
 resources :product_depreciations do
-  member do
+  collection do
     get 'cancel_one'
   end
 end
