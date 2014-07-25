@@ -17,8 +17,8 @@
 
 .qa-action-top-elements
   .contextual
-    = link_to l('products.new'), new_product_path, class: 'icon icon-add'
-    = link_to l('product_movement.new'), new_product_movement_path, class: 'icon icon-add'
+    = link_to l('products.new'), new_product_path, class: 'icon icon-add', remote: true
+    = link_to l('product_movement.new'), new_product_movement_path, class: 'icon icon-add', remote: true
     = link_to l(:label_cancellation_product), {controller: 'product_depreciations', action: 'cancel_one'}, class: 'icon icon-zoom-out', remote: true
 
 = form_tag({ controller: 'products', action: 'index' }, method: :get, id: 'search-form') do

@@ -51,12 +51,8 @@ class ProductsController < ApplicationController
 
   end
 
-  def new
-    respond_to do |format|
-      format.html # new.html.haml
-      format.json { render json: @product }
-    end
-  end
+  # def new
+  # end
 
   def create
     respond_to do |format|

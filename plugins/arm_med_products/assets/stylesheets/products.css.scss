@@ -2,11 +2,10 @@
 
 .product-form {
   width: 50%;
-//  border-collapse: collapse;
+  //  border-collapse: collapse;
   list-style-type: none;
 
-
-  .product-field{
+  .product-field {
     padding-bottom: 10px;
     li {
       list-style-type: none;
@@ -34,189 +33,206 @@
   .note {
 
   }
+}
+
+.product-receipt-one-form {
+  display: flex;
+  .count {
+    &.product-field {
+      list-style-type: none;
+    }
+  }
+  .inputs {
+    width: 500px;
+  }
+}
+
+
+
+
 
 // старое надо удалить
-  .qa-field-group {
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
-    > ol > li.input {
-      width: 49%;
-      margin: 0;
-      padding: 0;
-      display: inline-block;
-      &.hidden-class-name {
-        display: none;
-      }
-    }
-    > ol > li.input.in-one-row {
-      width: 65%;
-      &.hidden-class-name{
-        display: none;
-      }
-    }
-    .select2_updated_product_field {
-      width: 150px;
-    }
-  }
-
-  .label{
-    width: 200px;
-    &.wiki-edit {
-      vertical-align: top;
-      padding-top: 8px;
-    }
-  }
-
-  label,
-  .tabs a {
-    font-weight: bold;
-    &.required:after, abbr {
-      color: #b00;
-    }
-    &.required:after {
-      content: ' *';
-    }
-  }
-
-  div.tab-content {
-    border: solid 1px #bbb;
-    border-top: none;
-    @include border-radius(0 0 3px 3px);
-    display: none;
-    &.is-active {
-      display: block;
-    }
-    padding: 1.2em;
-  }
-}
-
-.ico {
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: 0 50%;
-  text-indent: -9999px;
-  overflow: hidden;
-  &.is-hidden {
-    display: none;
-  }
-}
-
-
-#content div.tabs {
-  margin-bottom: 0;
-  ul {
-    padding-left: 0;
-    li {
-      a.selected {
-        border-bottom: 0;
-        padding-bottom: 5px;
-      }
-    }
-  }
-}
-
-table.issues {
-  th.pictogram{
-    width: 16px;
-    overflow: hidden;
-    text-indent: -9999px;
-  }
-  td {
-    &.centered {
-      text-align: center;
-      padding-right: 2px;
-    }
-    &.head_product_info,
-    &.dse_product_info {
-      width: 240px;
-    }
-    .status {
-      $sprite-image-size: 16px;
-      background: url(../images/statuses_sprite.png) no-repeat 0 50%;
-      height: $sprite-image-size;
-      width: $sprite-image-size;
-      margin: 0 auto;
-      &.status-v-rabote {
-        background-position: -$sprite-image-size 50%;
-      }
-      &.status-gotov-k-proverke {
-        background-position: -$sprite-image-size*2 50%;
-      }
-      &.status-proveren {
-        background-position: -$sprite-image-size*3 50%;
-      }
-    }
-  }
-  .block-info-caption {
-    text-decoration: underline;
-  }
-}
-
-li.ui-menu-item.disabled {
-  text-decoration: none;
-  display: block;
-  padding: .2em .4em;
-  line-height: 1.5;
-  zoom: 1;
-  color: #b00;
-}
-
-
-.select2-result-label {
-  .is-dse-relation-header {
-    font-weight: bold;
-  }
-  .is-dse-relation-element {
-    color: #2e17bd;
-    background-image: url(../images/arrow_turn_right.png);
-    background-repeat: no-repeat;
-    background-position: -999px 0;
-  }
-}
-
-#s2id_products_search_fields {
-  display: block;
-  width: 600px;
-}
-
-.select2-results {
-  max-height: 400px;
-}
-
-.order-journal {
-  text-align: center;
-}
-
-.change_to_issue {
-  float: left;
-}
-
-.qa-action-top-elements {
-  margin-bottom: 5px;
-  overflow: hidden;
-}
-
-input.error {
-  background-color: #ffe3e3;
-  border-color: #dd0000;
-}
-
-#csv-export-options {
-  display: none;
-}
-
-#hor-scroll-wrapper {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  height: 20px;
-  width: 250px;
-  overflow-x: auto;
-
-  #hor-scroll {
-    height: 20px;
-  }
-}
+//  .qa-field-group {
+//    margin: 0px;
+//    padding: 0px;
+//    list-style: none;
+//    > ol > li.input {
+//      width: 49%;
+//      margin: 0;
+//      padding: 0;
+//      display: inline-block;
+//      &.hidden-class-name {
+//        display: none;
+//      }
+//    }
+//    > ol > li.input.in-one-row {
+//      width: 65%;
+//      &.hidden-class-name{
+//        display: none;
+//      }
+//    }
+//    .select2_updated_product_field {
+//      width: 150px;
+//    }
+//  }
+//
+//  .label{
+//    width: 200px;
+//    &.wiki-edit {
+//      vertical-align: top;
+//      padding-top: 8px;
+//    }
+//  }
+//
+//  label,
+//  .tabs a {
+//    font-weight: bold;
+//    &.required:after, abbr {
+//      color: #b00;
+//    }
+//    &.required:after {
+//      content: ' *';
+//    }
+//  }
+//
+//  div.tab-content {
+//    border: solid 1px #bbb;
+//    border-top: none;
+//    @include border-radius(0 0 3px 3px);
+//    display: none;
+//    &.is-active {
+//      display: block;
+//    }
+//    padding: 1.2em;
+//  }
+//}
+//
+//.ico {
+//  display: inline-block;
+//  background-repeat: no-repeat;
+//  background-position: 0 50%;
+//  text-indent: -9999px;
+//  overflow: hidden;
+//  &.is-hidden {
+//    display: none;
+//  }
+//}
+//
+//
+//#content div.tabs {
+//  margin-bottom: 0;
+//  ul {
+//    padding-left: 0;
+//    li {
+//      a.selected {
+//        border-bottom: 0;
+//        padding-bottom: 5px;
+//      }
+//    }
+//  }
+//}
+//
+//table.issues {
+//  th.pictogram{
+//    width: 16px;
+//    overflow: hidden;
+//    text-indent: -9999px;
+//  }
+//  td {
+//    &.centered {
+//      text-align: center;
+//      padding-right: 2px;
+//    }
+//    &.head_product_info,
+//    &.dse_product_info {
+//      width: 240px;
+//    }
+//    .status {
+//      $sprite-image-size: 16px;
+//      background: url(../images/statuses_sprite.png) no-repeat 0 50%;
+//      height: $sprite-image-size;
+//      width: $sprite-image-size;
+//      margin: 0 auto;
+//      &.status-v-rabote {
+//        background-position: -$sprite-image-size 50%;
+//      }
+//      &.status-gotov-k-proverke {
+//        background-position: -$sprite-image-size*2 50%;
+//      }
+//      &.status-proveren {
+//        background-position: -$sprite-image-size*3 50%;
+//      }
+//    }
+//  }
+//  .block-info-caption {
+//    text-decoration: underline;
+//  }
+//}
+//
+//li.ui-menu-item.disabled {
+//  text-decoration: none;
+//  display: block;
+//  padding: .2em .4em;
+//  line-height: 1.5;
+//  zoom: 1;
+//  color: #b00;
+//}
+//
+//
+//.select2-result-label {
+//  .is-dse-relation-header {
+//    font-weight: bold;
+//  }
+//  .is-dse-relation-element {
+//    color: #2e17bd;
+//    background-image: url(../images/arrow_turn_right.png);
+//    background-repeat: no-repeat;
+//    background-position: -999px 0;
+//  }
+//}
+//
+//#s2id_products_search_fields {
+//  display: block;
+//  width: 600px;
+//}
+//
+//.select2-results {
+//  max-height: 400px;
+//}
+//
+//.order-journal {
+//  text-align: center;
+//}
+//
+//.change_to_issue {
+//  float: left;
+//}
+//
+//.qa-action-top-elements {
+//  margin-bottom: 5px;
+//  overflow: hidden;
+//}
+//
+//input.error {
+//  background-color: #ffe3e3;
+//  border-color: #dd0000;
+//}
+//
+//#csv-export-options {
+//  display: none;
+//}
+//
+//#hor-scroll-wrapper {
+//  position: fixed;
+//  bottom: 0;
+//  right: 0;
+//  height: 20px;
+//  width: 250px;
+//  overflow-x: auto;
+//
+//  #hor-scroll {
+//    height: 20px;
+//  }
+//}
 
 

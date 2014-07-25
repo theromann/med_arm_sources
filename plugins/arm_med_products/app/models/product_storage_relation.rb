@@ -25,6 +25,8 @@ class ProductStorageRelation < ActiveRecord::Base
   attr_protected :product_storage_from, :product_storage_to, :product, :maintainer, :product_movement, :product_depreciation
 
   # TODO: скопе movements и depreciations
+  scope :movements, -> { where(depreciation_id: nil) }
+  scope :depreciations, -> { where(movement_id: nil) }
 
   def initialize(attributes=nil, *args)
     super

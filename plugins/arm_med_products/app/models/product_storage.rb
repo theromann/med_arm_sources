@@ -6,6 +6,9 @@ class ProductStorage < ActiveRecord::Base
   has_many :storage_product_counts, foreign_key: :storage_id, dependent: :destroy
   has_many :products, through: :storage_product_count
 
+
+
+
   def empty_count?(product) # for storage_from
     if product_count(product).nil?
       true

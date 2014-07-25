@@ -3,6 +3,11 @@
 = javascript_include_tag 'jquery-ui-timepicker-addon-ru', plugin: :arm_common
 = stylesheet_link_tag 'jquery-ui-timepicker-addon', plugin: :arm_common
 
+= javascript_include_tag 'select2.min.js', plugin: :arm_common
+= javascript_include_tag :select2_locale_ru, plugin: :arm_common
+= javascript_include_tag :cocoon, :plugin => :arm_common
+= stylesheet_link_tag :select2, plugin: :arm_common
+
 = render partial: 'products/form_scripts_and_styles'
 
 #tasks

@@ -3,6 +3,7 @@
 = javascript_include_tag :cocoon, :plugin => :arm_common
 = stylesheet_link_tag :select2, plugin: :arm_common
 
+
 = semantic_form_for @depreciation do |f|
   = f.semantic_fields_for :product_storage_relations do |relation|
     -#= render 'cancel_one_fields', :f => relation

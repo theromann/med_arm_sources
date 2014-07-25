@@ -12,14 +12,12 @@ class ProductMovementsController < ApplicationController
 
   end
 
-  def new
-  end
 
   def create
     return unless update_product_movement_from_params
     respond_to do |format|
       if @movement.save
-        format.html { redirect_to @movement,notice:l(:notice_successful_create)}
+        format.html { redirect_to products_path ,notice:l(:notice_successful_create)}
         format.json { render json: @movement, status: :created, location: @movement }
       else
         format.html { render action: 'new' }
