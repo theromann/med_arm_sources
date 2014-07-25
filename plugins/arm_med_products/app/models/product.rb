@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
   belongs_to :location, class_name: 'ProductStorage'
   belongs_to :group, class_name: 'ProductsGroup'
 
-  has_many :storage_product_counts, foreign_key: :product_id
+  has_many :storage_product_counts, foreign_key: :product_id, dependent: :destroy
   has_many :storages, through: :storage_product_counts
 
   validates_presence_of :location, :name

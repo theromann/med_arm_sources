@@ -3,7 +3,7 @@ class ProductStorage < ActiveRecord::Base
   include Redmine::SubclassFactory
 
   belongs_to :type, class_name: "ProductStoragesType"
-  has_many :storage_product_counts, foreign_key: :storage_id
+  has_many :storage_product_counts, foreign_key: :storage_id, dependent: :destroy
   has_many :products, through: :storage_product_count
 
   def empty_count?(product) # for storage_from

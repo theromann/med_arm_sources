@@ -1,0 +1,7 @@
+.contextual
+  -#TODO: добавить User.current.allowed_to? и permissions
+  = link_to l(:button_update), edit_product_movement_path(@movement),
+            class: 'icon icon-edit', accesskey: accesskey(:edit)
+  = link_to l(:button_delete), product_movement_path(@movement),
+            data: {confirm: l('product_movement.delete_confirmation_message')},
+            method: :delete, class: 'icon icon-del'

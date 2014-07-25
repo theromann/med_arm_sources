@@ -3,8 +3,8 @@ class StorageProductCount < ActiveRecord::Base
 
   attr_accessor :product, :storage
 
-  belongs_to :product, dependent: :destroy
-  belongs_to :storage, class_name: "ProductStorage", dependent: :destroy
+  belongs_to :product
+  belongs_to :storage, class_name: "ProductStorage"
 
   # validates_presence_of :storage, :product, :count
   # validates_uniqueness_of :product, :scope => :storage

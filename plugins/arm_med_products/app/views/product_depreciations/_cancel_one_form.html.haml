@@ -1,0 +1,18 @@
+= javascript_include_tag 'select2.min.js', plugin: :arm_common
+= javascript_include_tag :select2_locale_ru, plugin: :arm_common
+= javascript_include_tag :cocoon, :plugin => :arm_common
+= stylesheet_link_tag :select2, plugin: :arm_common
+
+= semantic_form_for @depreciation do |f|
+  = f.input :name
+  .well
+    = f.semantic_fields_for :product_storage_relations do |d|
+      = d.input :product_storage_from
+      -#= f.input :product, input_html: { value: params[:id] }
+    -#
+    -#= f.input :maintainer, input_html: { :class => 'select2 select2_updated_product_field', value: User.current }
+    -#
+    -#= f.input :count, :input_html => { :size => 10 }
+    -#
+    -#= f.input :note, :input_html => { :class => 'autogrow', :rows => 2, :cols => 69 }
+  = f.submit l('product_depreciation.save'), id: 'form_submit'

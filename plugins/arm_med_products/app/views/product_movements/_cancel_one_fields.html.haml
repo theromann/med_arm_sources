@@ -4,21 +4,13 @@
   .movement_line
     .movement_from
       = f.input :product_storage_from, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
-    - unless params[:action] == 'cancel_one'
-      .movement_to
-        = f.input :product_storage_to, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
   .product_movement_line
-    - if params[:action] == 'cancel_one'
-      = f.input :product, as: :hidden, input_html: {value: params[:id]}
-    - else
-      .product
-        = f.input :product, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }, label: :status_id, :include_blank => false
+    .product
+      = f.input :product, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }, label: :status_id, :include_blank => false
     .maintainer
       = f.input :maintainer, input_html: { :class => 'select2 select2_updated_product_field', value: User.current }
     .count
       = f.input :count, :input_html => { :size => 10 }
-    - if params[:action] == 'cancel_one'
-      = hidden_field_tag 'cancel_one_form', true
   .movement_note
     = f.input :note, :input_html => { :class => 'autogrow', :rows => 2, :cols => 69 }
   = link_to_remove_association l('product_storage_relation.link_to_remove'), f

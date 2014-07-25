@@ -36,3 +36,4 @@
                     = "#{content_tag(:span, column.caption, class: 'block-info-caption')}: #{text}".html_safe
             %td.links
               = link_to l(:label_product_storage_relation_new), {action: 'receipt_one', id: product.id}, class: 'icon icon-add', remote: true
+              = link_to l(:label_cancellation_product), {controller: 'product_depreciations', action: 'cancel_one', id: product.id}, class: 'icon icon-zoom-out', remote: true
