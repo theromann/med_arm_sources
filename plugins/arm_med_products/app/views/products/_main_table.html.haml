@@ -35,4 +35,8 @@
                   %td{colspan: "#{@query.inline_columns.size + 1}", class: "#{column.css_classes}"}
                     = "#{content_tag(:span, column.caption, class: 'block-info-caption')}: #{text}".html_safe
             %td.links
-              = link_to l(:label_product_storage_relation_new), {action: 'receipt_one', id: product.id}, class: 'icon icon-add', remote: true
+              = link_to "", {action: 'receipt_one', id: product.id}, class: 'icon icon-add', remote: true
+              = link_to("", {:controller => :products,
+                                    :action => :destroy,
+                                    :id => product}, :method => :delete,
+                               :class => "icon icon-del", :confirm => l(:confirm_delete_product))

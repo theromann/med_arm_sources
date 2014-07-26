@@ -23,7 +23,7 @@ ru:
   field_product: Товар
   field_maintainer: Ответственный
   field_time: Дата перемещения
-
+  field_max_count: "\"Полный склад\""
 
   setting_product_list_default_columns: Столбцы, отображаемые в списке карточек по умолчанию
   labels:
@@ -31,7 +31,7 @@ ru:
 
   link_to_show_all: показать все
 
-  label_product_storage_relation_new: Добавить товар
+  label_product_storage_relation_new: Поступление
   products:
     new:    Cоздать новый товар
     edit:   Редактировать товар
@@ -40,6 +40,8 @@ ru:
     save: Сохранить
     description: Описание
     groups: Группы товаров
+
+  confirm_delete_product: Действительно хотите удалить данное наименование товара
   label_products_groups_new: Добавить новую группу товаров
 
   label_product: Товар

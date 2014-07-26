@@ -8,5 +8,5 @@
   = f.semantic_fields_for :product_storage_relations do |relation|
     -#= render 'cancel_one_fields', :f => relation
   .links
-    = link_to_add_association l('product_storage_relation.add'), f, :product_storage_relations
+    = link_to_add_association l('product_depreciation.add'), f, :product_storage_relations
     = f.submit l('product_depreciation.save'), id: 'form_submit'

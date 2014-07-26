@@ -57,10 +57,10 @@ class ProductsController < ApplicationController
   def create
     respond_to do |format|
       if @product.save
-        format.html { redirect_to products_path,notice:l(:notice_successful_create)} # пока редирект на Index
+        format.html { redirect_to products_path, notice:l(:notice_successful_create)} # пока редирект на Index
         format.json { render json: @product, status: :created, location: @product }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to products_path }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end

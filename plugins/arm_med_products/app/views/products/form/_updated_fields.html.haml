@@ -1,22 +1,21 @@
-= javascript_include_tag :select2_multi_product, plugin: :arm_common
+= f.inputs do
+  .name.product-field
+    = f.input :name, input_html: {size: 29}
+  .storage.product-field
+    = f.input :location, input_html: { :class => 'select2' }
+  .unit.product-field
+    = f.input :unit, input_html: {size: 5}
+  .group.product-field
+    = f.input :group, input_html: { :class => 'select2' }
+  .max-count.product-field
+    = f.input :max_count, as: :string, input_html: {size: 5}
+  .count.product-field
+    -#= f.input :count, :input_html => { :size => 10 }
+  -#= f.input :product_item
+  -#= f.input :price
+  -#= f.input :status, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' } # статус должен быть расчетным
+  .note.product-field
+    = f.input :note, :input_html => { :class => 'autogrow', :rows => 2, :cols => 69 }
 
-.product-form
-  = f.inputs do
-    .name.product-field
-      = f.input :name
-    .storage.product-field
-      = f.input :location
-    .unit.product-field
-      = f.input :unit
-    .group.product-field
-      = f.input :group, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' }
-    .max-count.product-field
-      = f.input :max_count, :input_html => { :size => 2}
-    .count.product-field
-      -#= f.input :count, :input_html => { :size => 10 }
-    -#= f.input :product_item
-    -#= f.input :price
-    -#= f.input :status, input_html: { :class => 'select2 non-select2-search select2_updated_product_field' } # статус должен быть расчетным
-    .note.product-field
-      = f.input :note, :input_html => { :class => 'autogrow', :rows => 2, :cols => 69 }
-
+:javascript
+  $('select.select2').select2({allowClear: true});

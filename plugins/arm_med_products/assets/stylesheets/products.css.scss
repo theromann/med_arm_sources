@@ -1,39 +1,66 @@
 @import "compass/css3";
 
-.product-form {
-  width: 50%;
-  //  border-collapse: collapse;
-  list-style-type: none;
-
-  .product-field {
+.product-top-elements {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  .contextual {
     padding-bottom: 10px;
-    li {
-      list-style-type: none;
-      label {
-        float: left;
-        width: 100px;
-      }
-    }
-  }
-  .name {
-
-  }
-  .unit {
-
-  }
-  .group {
-
-  }
-  .max-count {
-
-  }
-  .count {
-
-  }
-  .note {
-
   }
 }
+
+form {
+  &#new_product {
+    ol {
+      list-style-type: none;
+    }
+    .product-fields {
+
+      list-style-type: none;
+
+      .product-field {
+        padding-bottom: 10px;
+        li {
+          list-style-type: none;
+          label {
+            float: left;
+            width: 150px;
+            abbr {
+              color: #b00;
+            }
+          }
+        }
+      }
+      .name {
+
+      }
+      .storage {
+        .select2 {
+          width: 250px;
+        }
+      }
+      .unit {
+
+      }
+      .group {
+        .select2 {
+          width: 250px;
+        }
+      }
+      .max-count {
+
+      }
+      .count {
+
+      }
+      .note {
+
+      }
+
+    }
+  }
+
+}
+
 
 .product-receipt-one-form {
   display: flex;
