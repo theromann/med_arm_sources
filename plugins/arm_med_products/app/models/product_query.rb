@@ -59,7 +59,17 @@ class ProductQuery < Query
     order_option = [group_by_sort_order, options[:order]].flatten.reject(&:blank?)
     conditions = [statement, options[:conditions]].select(&:present?).map do |condition|
       "(#{condition})"
-    end.join(' AND ')
+    end
+
+    if options[:products_group_ids]
+      groups = []
+      options[:products_group_ids].each do |number|
+        groups << "group_id = #{number}"
+      end
+      conditions << groups.join(" OR ")
+    end
+
+    conditions = conditions.join(' AND ')
     Product.all(
         # include: ([:location, :status] + (options[:include] || [])).uniq,
         include: ([:location] + (options[:include] || [])).uniq,
@@ -77,7 +87,18 @@ class ProductQuery < Query
     order_option = [group_by_sort_order, options[:order]].flatten.reject(&:blank?)
     conditions = [statement, options[:conditions]].select(&:present?).map do |condition|
       "(#{condition})"
-    end.join(' AND ')
+    end
+
+    if options[:products_group_ids]
+      groups = []
+      options[:products_group_ids].each do |number|
+        groups << "group_id = #{number}"
+      end
+      conditions << groups.join(" OR ")
+    end
+
+    conditions = conditions.join(' AND ')
+
     Product.count(
         include: ([:location, :status] + (options[:include] || [])).uniq,
         conditions: conditions,

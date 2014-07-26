@@ -137,7 +137,8 @@ class ProductsController < ApplicationController
         order: sort_order,
         conditions: @conditions,
         offset: @offset,
-        limit: @limit
+        limit: @limit,
+        products_group_ids: params[:products_group_ids]
     }
   end
 
