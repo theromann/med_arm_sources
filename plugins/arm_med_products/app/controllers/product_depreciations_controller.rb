@@ -18,7 +18,10 @@ class ProductDepreciationsController < ApplicationController
   def create
     return unless update_product_movement_from_params
     if @depreciation.save
-      redirect_to products_path,notice:l(:notice_successful_create)
+      respond_to do |format|
+        format.html {       redirect_to products_path,notice:l(:notice_successful_create)        }
+        format.js
+      end
     else
       redirect_to products_path
     end

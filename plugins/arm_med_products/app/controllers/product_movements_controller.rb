@@ -18,7 +18,7 @@ class ProductMovementsController < ApplicationController
     respond_to do |format|
       if @movement.save
         format.html { redirect_to products_path ,notice:l(:notice_successful_create)}
-        format.json { render json: @movement, status: :created, location: @movement }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @movement.errors, status: :unprocessable_entity }
