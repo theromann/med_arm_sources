@@ -17,9 +17,12 @@
 
 .product-top-elements
   .contextual
-    = link_to l('products.new'), new_product_path, class: 'icon icon-add', remote: true
-    = link_to l('product_movement.new'), new_product_movement_path, class: 'icon icon-add', remote: true
-    = link_to l(:label_cancellation_product), {controller: 'product_depreciations', action: 'new'}, class: 'icon icon-zoom-out', remote: true
+    - if User.current.allowed_to?(:create_product, :system)
+      = link_to l('products.new'), new_product_path, class: 'icon icon-add', remote: true
+    - if User.current.allowed_to?(:create_product_movements, :system)
+      = link_to l('product_movement.new'), new_product_movement_path, class: 'icon icon-add', remote: true
+    - if User.current.allowed_to?(:create_product_depreciation, :system)
+      = link_to l(:label_cancellation_product), {controller: 'product_depreciations', action: 'new'}, class: 'icon icon-zoom-out', remote: true
 
 = form_tag({ controller: 'products', action: 'index' }, method: :get, id: 'search-form') do
   = hidden_field_tag 'set_filter', '0'

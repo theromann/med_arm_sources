@@ -24,6 +24,7 @@ Redmine::Plugin.register :arm_med_products do
 
   permission :show_products, {products:  [:index]}, system: true
   permission :create_product, {products:  [:new, :create]}, system: true
+  permission :receipt_products, {products:  [:receipt_one]}, system: true
   permission :destroy_product, {products: [:destroy]}, system: true
   permission :create_product_movements, {product_movements: [:new, :create]}, system: true
   permission :create_product_depreciation, {product_depreciations: [:new, :create]}, system: true
