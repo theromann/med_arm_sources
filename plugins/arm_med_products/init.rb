@@ -6,6 +6,8 @@ Redmine::Plugin.register :arm_med_products do
   url 'http://example.com/path/to/plugin'
   author_url 'http://example.com/about'
 
+  requires_redmine_plugin :vhod_system_roles, version_or_higher: '0.0.1'
+
   settings( default: {
       product_list_default_columns: [
           'name',
@@ -20,6 +22,7 @@ Redmine::Plugin.register :arm_med_products do
   menu :admin_menu, :products, {:controller => 'settings', :action => 'plugin', :id => "arm_med_products"}, :caption => :products_settings_title
   menu :customer_menu, :products, {:controller => 'settings', :action => 'plugin', :id => "arm_med_products"}, :caption => :products_settings_title
 
+  permission :show_products, {products:  [:index]}, system: true
 
 end
 

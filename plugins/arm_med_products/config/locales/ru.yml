@@ -110,4 +110,6 @@ ru:
   label_product_storages_settings: Настройки места хранения
   label_products_settings: Настройки товара
 
+  permission_show_products:   Просматривать склад
+
 

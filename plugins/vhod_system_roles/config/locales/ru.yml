@@ -1,0 +1,7 @@
+ru:
+  label_system_permissions: 'Системные привилегии'
+  label_role_for_project: 'Роль в проекте'
+  label_system_role:      'Системная роль'
+  label_system_roles:     'Системные роли'
+
+  field_groups: "Группы"

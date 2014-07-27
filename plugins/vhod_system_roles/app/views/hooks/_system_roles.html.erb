@@ -1,0 +1,13 @@
+<div id="user_system_roles_fields" style="display: <%= user.auth_source.is_a?(AuthSourceLdap) ? 'none' : 'block' %>">
+  <h3><%= l(:label_system_roles) %></h3>
+  <ul>
+    <% SystemRole.all.each do |role| %>
+      <li>
+        <%= check_box_tag 'user[system_roles][]', role, user.system_roles.include?(role) %>
+        <%= role.name %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= javascript_include_tag 'user_system_roles', :plugin => :vhod_system_roles %>

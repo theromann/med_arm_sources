@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   unloadable
+  before_filter :authorize
+
   prepend_before_filter :new_product, only: [:new, :create]
   before_filter :find_product, only: [:show, :edit, :update, :destroy, :receipt_one]
   before_filter :send_paths_to_js, only: [:new, :edit, :create, :update]
@@ -161,5 +163,12 @@ class ProductsController < ApplicationController
     @products_groups = ProductsGroup.scoped
   end
 
-
+  def authorize(ctrl = params[:controller], action = params[:action], global = false)
+    allowed = User.current.allowed_to?({controller: ctrl, action: action}, :system)
+    if allowed
+      true
+    else
+      render_403
+    end
+  end
 end
