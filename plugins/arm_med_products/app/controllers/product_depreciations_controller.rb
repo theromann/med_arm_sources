@@ -1,5 +1,6 @@
 class ProductDepreciationsController < ApplicationController
   unloadable
+  before_filter :authorize
 
   before_filter :new_product_depreciation, only: [:new, :create, :cancel_one]
   before_filter :find_product_depreciation, only: [:show, :edit, :update, :destroy]
@@ -54,5 +55,14 @@ class ProductDepreciationsController < ApplicationController
     @depreciation = ProductDepreciation.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render_404
+  end
+
+  def authorize(ctrl = params[:controller], action = params[:action], global = false)
+    allowed = User.current.allowed_to?({controller: ctrl, action: action}, :system)
+    if allowed
+      true
+    else
+      render_403
+    end
   end
 end

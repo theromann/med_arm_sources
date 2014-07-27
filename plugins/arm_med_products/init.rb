@@ -23,6 +23,12 @@ Redmine::Plugin.register :arm_med_products do
   menu :customer_menu, :products, {:controller => 'settings', :action => 'plugin', :id => "arm_med_products"}, :caption => :products_settings_title
 
   permission :show_products, {products:  [:index]}, system: true
+  permission :create_product, {products:  [:new, :create]}, system: true
+  permission :destroy_product, {products: [:destroy]}, system: true
+  permission :create_product_movements, {product_movements: [:new, :create]}, system: true
+  permission :create_product_depreciation, {product_depreciations: [:new, :create]}, system: true
+
+
 
 end
 

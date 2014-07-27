@@ -1,5 +1,6 @@
 class ProductMovementsController < ApplicationController
   unloadable
+  before_filter :authorize
 
   before_filter :new_product_movement, only: [:new, :create]
   before_filter :find_product_movement, only: [:show, :edit, :update, :destroy]
@@ -48,5 +49,14 @@ class ProductMovementsController < ApplicationController
     @movement = ProductMovement.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render_404
+  end
+
+  def authorize(ctrl = params[:controller], action = params[:action], global = false)
+    allowed = User.current.allowed_to?({controller: ctrl, action: action}, :system)
+    if allowed
+      true
+    else
+      render_403
+    end
   end
 end
