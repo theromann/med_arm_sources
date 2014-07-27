@@ -1,0 +1,6 @@
+#admin-menu
+  - if User.current.id == 1
+    = render_menu :admin_menu
+  - else
+    = render_menu :customer_menu
+

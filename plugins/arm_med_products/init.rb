@@ -17,7 +17,8 @@ Redmine::Plugin.register :arm_med_products do
 
   menu :top_menu, :products, {controller: 'products', action: 'index'}, :caption => :label_products
 
-  menu :admin_menu, :products, {:controller => 'settings', :action => 'plugin', :id => "arm_med_products"}, :caption => :products_title
+  menu :admin_menu, :products, {:controller => 'settings', :action => 'plugin', :id => "arm_med_products"}, :caption => :products_settings_title
+  menu :customer_menu, :products, {:controller => 'settings', :action => 'plugin', :id => "arm_med_products"}, :caption => :products_settings_title
 
 
 end
