@@ -10,6 +10,8 @@ class Product < ActiveRecord::Base
   has_many :storages, through: :storage_product_counts
 
   validates_presence_of :location, :name
+  validates :name, :uniqueness => true
+
   validate :must_be_location_if_count_more_then_zero
 
   after_create :create_storage_product_count

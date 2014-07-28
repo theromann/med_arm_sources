@@ -17,6 +17,7 @@
 
 class ProductsGroup < Enumeration
   validates_presence_of :name
+  validates :name, :uniqueness => true
 
   has_many :products, :foreign_key => 'group_id'
 

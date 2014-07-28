@@ -10,6 +10,7 @@ gem 'redmine_plugin_asset_pipeline'
 gem 'therubyracer'
 gem 'activerecord-import', '>= 0.2.0'
 
+
 group :development do
   gem 'pry'
   gem 'better_errors'
