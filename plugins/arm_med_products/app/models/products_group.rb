@@ -16,6 +16,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 class ProductsGroup < Enumeration
+  validates_presence_of :name
+
   has_many :products, :foreign_key => 'group_id'
 
   OptionName = :products_groups
