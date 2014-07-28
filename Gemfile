@@ -4,7 +4,7 @@ gem "rails", "3.2.18"
 gem "rake", "~> 10.1.1"
 gem "jquery-rails", "~> 2.0.2"
 gem "coderay", "~> 1.1.0"
-gem "fastercsv", "~> 1.5.0", :platforms => [:mri_18, :mingw_18, :jruby]
+gem "fastercsv"
 gem "builder", "3.0.0"
 gem "request_store"
 gem "mime-types"
