@@ -1,5 +1,8 @@
 %h3.title
-  = l('products.new')
+  - if params[:action]=="edit"
+    = l('products.edit')
+  - else
+    = l('products.new')
 = stylesheet_link_tag :products, plugin: :arm_med_products
 = semantic_form_for @product do |f|
   = error_messages_for 'product'

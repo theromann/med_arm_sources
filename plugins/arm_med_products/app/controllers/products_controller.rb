@@ -75,6 +75,9 @@ class ProductsController < ApplicationController
     return unless update_product_from_params
     respond_to do |format|
       if @product.save
+        default_storage = StorageProductCount.where(product_id: @product).last
+        default_storage.storage_id = @product.location_id
+        default_storage.save
         # if params[:receipt_one_form].present?
           format.html { redirect_to :back ,notice:l(:notice_successful_update) }
         # else

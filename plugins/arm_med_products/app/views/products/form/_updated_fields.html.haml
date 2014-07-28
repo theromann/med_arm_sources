@@ -1,3 +1,5 @@
+= stylesheet_link_tag :products, plugin: :arm_med_products
+
 = f.inputs do
   .name.product-field
     = f.input :name, input_html: {size: 29}
@@ -17,5 +19,4 @@
   .note.product-field
     = f.input :note, :input_html => { :class => 'autogrow', :rows => 2, :cols => 69 }
 
-:javascript
-  $('select.select2').select2({allowClear: true});
+
