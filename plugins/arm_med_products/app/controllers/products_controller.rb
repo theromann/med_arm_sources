@@ -76,7 +76,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         # if params[:receipt_one_form].present?
-          format.html { redirect_to products_path ,notice:l(:notice_successful_update) }
+          format.html { redirect_to :back ,notice:l(:notice_successful_update) }
         # else
         #   format.html { redirect_to @product,notice:l(:notice_successful_update) }
         #   format.json { head :no_content }
@@ -140,7 +140,8 @@ class ProductsController < ApplicationController
         conditions: @conditions,
         offset: @offset,
         limit: @limit,
-        products_group_ids: params[:products_group_ids]
+        products_group_ids: params[:products_group_ids],
+        product_storage_ids: params[:product_storage_ids]
     }
   end
 

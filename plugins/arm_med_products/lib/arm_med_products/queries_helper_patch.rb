@@ -23,6 +23,12 @@ module ArmMedProducts
           else
             value.to_s
           end
+        when 'String'
+          if column.name == :name
+            link_to value, product_path(product)
+          else
+            value.to_s
+          end
         when 'Time'
           value.strftime("%d.%m.%Y")
         else

@@ -37,6 +37,7 @@
             %td.links
               - if User.current.allowed_to?(:receipt_products, :system)
                 = link_to "", {action: 'receipt_one', id: product.id}, class: 'icon icon-add', remote: true
+                &nbsp;&nbsp;
               - if User.current.allowed_to?(:destroy_product, :system)
                 = link_to("", {:controller => :products,
                                     :action => :destroy,

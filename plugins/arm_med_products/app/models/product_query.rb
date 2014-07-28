@@ -60,7 +60,7 @@ class ProductQuery < Query
     conditions = [statement, options[:conditions]].select(&:present?).map do |condition|
       "(#{condition})"
     end
-
+    # TODO: убрать копи-паст
     if options[:products_group_ids]
       groups = []
       options[:products_group_ids].each do |number|
@@ -68,14 +68,24 @@ class ProductQuery < Query
       end
       conditions << groups.join(" OR ")
     end
+    # TODO: убрать копи-паст
+    if options[:product_storage_ids]
+      storages = []
+      options[:product_storage_ids].each do |number|
+        storages << "location_id = #{number}"
+        storages << "storage_product_counts.storage_id = #{number}"
+      end
+      conditions << storages.join(" OR ")
+    end
 
     conditions = conditions.join(' AND ')
+
     Product.all(
         # include: ([:location, :status] + (options[:include] || [])).uniq,
         include: ([:location] + (options[:include] || [])).uniq,
         conditions: conditions,
         order: order_option,
-        joins: joins_for_order_statement(order_option.join(',')),
+        joins: 'JOIN storage_product_counts ON storage_product_counts.product_id = products.id ',
         limit: options[:limit],
         offset: options[:offset]
     )
@@ -89,6 +99,7 @@ class ProductQuery < Query
       "(#{condition})"
     end
 
+    # TODO: убрать копи-паст
     if options[:products_group_ids]
       groups = []
       options[:products_group_ids].each do |number|
@@ -97,13 +108,23 @@ class ProductQuery < Query
       conditions << groups.join(" OR ")
     end
 
+    # TODO: убрать копи-паст
+    if options[:product_storage_ids]
+      storages = []
+      options[:product_storage_ids].each do |number|
+        storages << "location_id = #{number}"
+        storages << "storage_product_counts.storage_id = #{number}"
+      end
+      conditions << storages.join(" OR ")
+    end
+
     conditions = conditions.join(' AND ')
 
     Product.count(
         include: ([:location, :status] + (options[:include] || [])).uniq,
         conditions: conditions,
         order: order_option,
-        joins: joins_for_order_statement(order_option.join(','))
+        joins: 'JOIN storage_product_counts ON storage_product_counts.product_id = products.id '
     )
   rescue ::ActiveRecord::StatementInvalid => e
     raise StatementInvalid.new(e.message)

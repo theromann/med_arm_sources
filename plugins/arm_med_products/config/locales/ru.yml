@@ -40,6 +40,7 @@ ru:
     save: Сохранить
     description: Описание
     groups: Группы товаров
+    storages: Места хранения
 
   confirm_delete_product: Действительно хотите удалить данное наименование товара
   label_products_groups_new: Добавить новую группу товаров

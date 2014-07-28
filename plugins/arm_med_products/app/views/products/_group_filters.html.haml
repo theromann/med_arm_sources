@@ -12,5 +12,5 @@
       %th &nbsp;
       %th= l('products.storages')
   %tbody
-    = render @product_storages, checked_groups: params[:products_storage_ids].to_a
+    = render @product_storages, checked_groups: params[:product_storage_ids].to_a
 = submit_tag l(:button_apply), form: 'search-form'
