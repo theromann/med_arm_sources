@@ -8,7 +8,8 @@
 plugins =  [
   # TODO: вставить название плагина мед-склад (было "redmine_contacts"),
   "arm_common",
-  "arm_status"
+  "arm_status",
+  "vhod_system_roles"
   ]
 
 def load_specific_plugin(name)
