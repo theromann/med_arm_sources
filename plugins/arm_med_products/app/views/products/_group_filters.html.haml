@@ -5,4 +5,12 @@
       %th= l('products.groups')
   %tbody
     = render @products_groups, checked_groups: params[:products_group_ids].to_a
+
+%table
+  %thead
+    %tr
+      %th &nbsp;
+      %th= l('products.storages')
+  %tbody
+    = render @product_storages, checked_groups: params[:products_storage_ids].to_a
 = submit_tag l(:button_apply), form: 'search-form'

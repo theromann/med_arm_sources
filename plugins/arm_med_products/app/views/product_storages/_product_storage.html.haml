@@ -1,0 +1,7 @@
+- resource_id = product_storage.send('id')
+- node_status = checked_groups.include? resource_id.to_s
+
+%tr
+  %td= check_box_tag 'product_storage_ids[]', product_storage.id, node_status, form: 'search-form'
+  %td
+    %span.group-name= product_storage.name

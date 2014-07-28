@@ -161,6 +161,7 @@ class ProductsController < ApplicationController
 
   def find_group_resources
     @products_groups = ProductsGroup.scoped
+    @product_storages = ProductStorage.scoped
   end
 
   def authorize(ctrl = params[:controller], action = params[:action], global = false)
