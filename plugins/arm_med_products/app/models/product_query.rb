@@ -88,7 +88,7 @@ class ProductQuery < Query
         joins: 'JOIN storage_product_counts ON storage_product_counts.product_id = products.id ',
         limit: options[:limit],
         offset: options[:offset]
-    )
+    ).uniq
   rescue ::ActiveRecord::StatementInvalid => e
     raise StatementInvalid.new(e.message)
   end
