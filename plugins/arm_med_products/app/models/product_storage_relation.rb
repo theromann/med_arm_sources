@@ -70,7 +70,7 @@ class ProductStorageRelation < ActiveRecord::Base
   end
 
   def cannot_move_more_then_exist_in_storage
-    if !product_storage_from.empty_count?(product) and product_storage_from.product_count(product) <= count
+    if !product_storage_from.empty_count?(product) and product_storage_from.product_count(product) < count
       errors.add :product_storage_from, :error_cannot_move_more_then_exist_in_storage
     end
   end

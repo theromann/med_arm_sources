@@ -1,0 +1,2 @@
+$("#<%= params[:product_count_input_id] %>").attr('value', '<%= j max_product_count(params[:storage_id], params[:product_id]) %>');
+$("#<%= params[:product_count_input_id] %>").attr('max', '<%= j max_product_count(params[:storage_id], params[:product_id]) %>');

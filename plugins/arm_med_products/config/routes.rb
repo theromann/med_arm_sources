@@ -6,6 +6,7 @@ resources :products do
   end
   collection do
     get 'get_product_list_in_storage'
+    get 'get_max_product_count'
   end
 end
 resources :product_storages

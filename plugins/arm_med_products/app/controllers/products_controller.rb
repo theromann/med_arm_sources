@@ -1,10 +1,8 @@
 class ProductsController < ApplicationController
   unloadable
   before_filter :authorize
-
   prepend_before_filter :new_product, only: [:new, :create]
   before_filter :find_product, only: [:show, :edit, :update, :destroy, :receipt_one]
-  before_filter :send_paths_to_js, only: [:new, :edit, :create, :update]
   before_filter :find_group_resources, only: [:index]
 
   helper :sort
@@ -13,8 +11,6 @@ class ProductsController < ApplicationController
   include QueriesHelper
   helper :product_queries
   include ProductQueriesHelper
-
-
 
   def index
     retrieve_query
@@ -101,14 +97,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def receipt_one
-  end
-
-  def get_product_list_in_storage
-    # @products = products_list_in(params[:storage_id])
-
-  end
-
   private
   def new_product
     @product = Product.new(params[:product])
@@ -118,17 +106,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render_404
-  end
-
-  def send_paths_to_js
-    # products_init = []
-    # @product.products.each do |product|
-    #   products_init << {id: product.id, text: product.to_s}
-    # end
-    # gon.push({
-    #              products_autocomplete_path: autocomplete_dse_products_path,
-    #              select2_products: products_init
-    #          })
   end
 
   def retrieve_product_query_from_session

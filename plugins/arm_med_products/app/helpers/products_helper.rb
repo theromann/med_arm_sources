@@ -114,12 +114,10 @@ module ProductsHelper
   def products_list_in(storage)
     @products = Product.joins(:storage_product_counts).where('storage_product_counts.storage_id = ?', storage)
     options_for_select(@products.map{|t| [t.name, t.id ]})
-    # Product.joins(:storage_product_counts).where('storage_product_counts.storage_id = ?', storage.id)
-        # QaDefectDocType.all.map{|doc_type| [doc_type.name, doc_type.id ]}
   end
 
-  def count_of_product_in(storage, product)
-
+  def max_product_count(storage_id, product_id)
+    StorageProductCount.where(storage_id: storage_id, product_id: product_id).first.count.to_s
   end
 
 end

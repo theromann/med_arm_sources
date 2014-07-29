@@ -1,61 +1,33 @@
 jQuery(document).ready(function($) {
 
-//    выбор "откуда"
+//    выбор "откуда - переренер product select"
     $('.one-product-movement').on('change', ".movement_from_select", function(){
         updateMovementProductSelect($(this));
     });
 
-
-
-//  var path = '/users_select2_autocomplete';
-//  var limit = 25;
-//  $('#qa_action_maintainer_id').select2({
-//    allowClear: true,
-//    ajax: {
-//      url: path,
-//      dataType: 'json',
-//      data: function (term, page) {
-//        return {
-//          term: term,
-//          page: page
-//        };
-//      },
-//      results: function (data, page) {
-//        var more = (page * limit) < data.total;
-//        return {results: data.users, more: more};
-//      }
-//    },
-//    initSelection : function (element, callback) {
-//      var $element = $(element);
-//      var id = $element.val();
-//      if (id!=="") {
-//        $.ajax(path, {
-//          data: {
-//            single: true,
-//            user_id: id
-//          },
-//          dataType: "json"
-//        }).done(function(data) {
-//          if(data != null) {
-//            callback(data);
-//          }
-//          else {
-//            $element.val('');
-//            callback({id: '', text: ''})
-//          }
-//        });
-//      }
-//    }
-//  });
+//    выбор "товар - утсанавливается макс и мин значение для возможности перенести"
+    $('.one-product-movement').on('change', ".movement_product_select", function(){
+        updateMaxProductCount($(this));
+    });
 });
 
-
-
 function updateMovementProductSelect(elem) {
-    var val = elem.val();
-//    var id = elem.attr('id');
-    var product_select_id = elem.parents('.one-product-movement').find(".movement_product_select").attr("id");
-    alert(product_select_id);
+  var storage_id = elem.val();
+  var product_select_id = elem.parents('.one-product-movement').find(".movement_product_select").attr("id");
+
   $.get("/products/get_product_list_in_storage"
-        + "/?storage_id=" + val + "&movement_product_select=" + product_select_id).done();
+        + "/?storage_id=" + storage_id
+        + "&movement_product_select=" + product_select_id).done();
+}
+
+function updateMaxProductCount(elem) {
+  var frame = elem.parents(".one-product-movement");
+
+  var product_id = elem.val();
+  var storage_id = frame.find(".movement_from").find('select').val();
+  var product_count_input_id = frame.find("input[type=number]").attr('id');
+  $.get("/products/get_max_product_count"
+    + "/?storage_id=" + storage_id
+    + "&product_id=" + product_id
+    + "&product_count_input_id=" + product_count_input_id).done();
 }
