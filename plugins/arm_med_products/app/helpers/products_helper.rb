@@ -112,7 +112,7 @@ module ProductsHelper
   end
 
   def products_list_in(storage)
-    @products = Product.joins(:storage_product_counts).where('storage_product_counts.storage_id = ?', storage.id)
+    @products = Product.joins(:storage_product_counts).where('storage_product_counts.storage_id = ?', storage)
     options_for_select(@products.map{|t| [t.name, t.id ]})
     # Product.joins(:storage_product_counts).where('storage_product_counts.storage_id = ?', storage.id)
         # QaDefectDocType.all.map{|doc_type| [doc_type.name, doc_type.id ]}

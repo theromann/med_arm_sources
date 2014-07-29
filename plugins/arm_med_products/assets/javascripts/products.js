@@ -53,7 +53,9 @@ jQuery(document).ready(function($) {
 
 function updateMovementProductSelect(elem) {
     var val = elem.val();
-    var id = elem.attr('id');
-    $.get("/products/get_product_list_in_storage"
-        + "/?storage_id=" + val + "&movement_from_select_id=" + id).done();
+//    var id = elem.attr('id');
+    var product_select_id = elem.parents('.one-product-movement').find(".movement_product_select").attr("id");
+    alert(product_select_id);
+  $.get("/products/get_product_list_in_storage"
+        + "/?storage_id=" + val + "&movement_product_select=" + product_select_id).done();
 }
