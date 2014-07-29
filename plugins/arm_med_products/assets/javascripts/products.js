@@ -1,13 +1,20 @@
 jQuery(document).ready(function($) {
 
+
 //    выбор "откуда - переренер product select"
-    $('.one-product-movement').on('change', ".movement_from_select", function(){
+    $('#form_for_product_movement').on('change', ".movement_from_select", function(){
         updateMovementProductSelect($(this));
     });
 
 //    выбор "товар - утсанавливается макс и мин значение для возможности перенести"
-    $('.one-product-movement').on('change', ".movement_product_select", function(){
+    $('#form_for_product_movement').on('change', ".movement_product_select", function(){
         updateMaxProductCount($(this));
+    });
+
+//  скрытие "добавить перемешение" и show кнопки СОХРАНИТЬ при нажатии "добавить перемешение"
+    $('#form_for_product_movement').on('click', ".add_fields", function(){
+      alert('ssssss');
+      triggerSaveButtonAndLink($(this));
     });
 });
 
@@ -30,4 +37,9 @@ function updateMaxProductCount(elem) {
     + "/?storage_id=" + storage_id
     + "&product_id=" + product_id
     + "&product_count_input_id=" + product_count_input_id).done();
+}
+
+function triggerSaveButtonAndLink(elem) {
+  $("#form_submit").css('display', 'block');
+  elem.hide();
 }

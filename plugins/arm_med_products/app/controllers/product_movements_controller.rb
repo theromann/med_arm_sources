@@ -5,15 +5,6 @@ class ProductMovementsController < ApplicationController
   before_filter :new_product_movement, only: [:new, :create]
   before_filter :find_product_movement, only: [:show, :edit, :update, :destroy]
 
-
-  def index
-  end
-
-  def show
-
-  end
-
-
   def create
     return unless update_product_movement_from_params
     respond_to do |format|
@@ -27,15 +18,11 @@ class ProductMovementsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
-
   private
 
   def new_product_movement
     @movement = ProductMovement.new(params[:product_movement])
+    @movement.product_storage_relations.build
   end
 
 
