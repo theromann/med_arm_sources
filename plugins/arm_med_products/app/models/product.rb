@@ -56,6 +56,7 @@ class Product < ActiveRecord::Base
                   'price',
                   'location_id',
                   # 'status_id',
+                  'max_count',
                   'count',
                   'note',
                   'unit',
@@ -111,7 +112,7 @@ class ProductStatusCalculating
     if @product.max_count.nil? or (@product.max_count == 0)
       100
     else
-      @product.count/(@product.max_count.nil? ? 0 : @product.max_count) * 100
+      (@product.count.to_f / @product.max_count.to_f) * 100
     end
   end
 end
