@@ -112,5 +112,8 @@ ru:
   label_products_settings: Настройки товара
 
   permission_show_products:   Просматривать склад
-
-
+#статусы продуктов
+  product_status_is_critical: Критично
+  product_status_is_more:     Много
+  product_status_is_medium:   Нормально
+  product_status_is_low:      Мало

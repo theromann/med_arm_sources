@@ -1,8 +1,6 @@
 class Product < ActiveRecord::Base
   unloadable
   include Redmine::SafeAttributes
-
-  belongs_to :status, class_name: 'CountProductStatus'
   belongs_to :location, class_name: 'ProductStorage'
   belongs_to :group, class_name: 'ProductsGroup'
 
@@ -25,7 +23,7 @@ class Product < ActiveRecord::Base
       ['product_item', "`products`.product_item"],
       ['name', "`products`.name"],
       ['price', "`products`.price"],
-      ['status', "`product_statuses`.name"],
+      # ['status', "`product_statuses`.name"],
       ['group', "`products_groups`.name"],
       ['location', "`locations`.name"],
       # ['status', "`count_product_statuses`.name"],
@@ -78,15 +76,9 @@ class Product < ActiveRecord::Base
     locat.save
   end
 
-
-  # def to_receipt
-  # end
-  #
-  # def to_receipt=(count)
-  #   product_count = StorageProductCount.where({product_id: self.id, storage_id: location_id}).first
-  #   product_count.count += count.to_i
-  #   product_count.save
-  # end
+  def status
+    ProductStatusCalculating.new(self).value
+  end
 
   def default_storage
     StorageProductCount.where(product_id: self.id, storage_id: self.location_id).first
@@ -116,17 +108,31 @@ class ProductStatusCalculating
   end
 
   def persent
-    #  @product.current_count/@product.count *100
+    if @product.max_count.nil? or (@product.max_count == 0)
+      100
+    else
+      @product.count/(@product.max_count.nil? ? 0 : @product.max_count) * 100
+    end
   end
 end
 
 class ProductStatusPolice
-    def initialize(persent)
+  include Redmine::I18n
 
+  def initialize(persent)
+      @persent = persent
     end
 
   def value
-
+    if @persent > 50
+      l("product_status_is_more")
+    elsif @persent > 30
+     l("product_status_is_medium")
+    elsif @persent > 10
+      l("product_status_is_low")
+    else
+      l("product_status_is_critical")
+    end
   end
 
 end

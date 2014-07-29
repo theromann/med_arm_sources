@@ -2,10 +2,11 @@ class ProductMovementsController < ApplicationController
   unloadable
   before_filter :authorize
 
-  before_filter :new_product_movement, only: [:new, :create]
+  before_filter :new_product_movement, only: [:new]
   before_filter :find_product_movement, only: [:show, :edit, :update, :destroy]
 
   def create
+    @movement = ProductMovement.new(params[:product_movement])
     return unless update_product_movement_from_params
     respond_to do |format|
       if @movement.save
