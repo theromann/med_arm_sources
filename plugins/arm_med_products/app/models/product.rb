@@ -104,3 +104,29 @@ class Product < ActiveRecord::Base
     end
   end
 end
+
+class ProductStatusCalculating
+
+  def initialize(product)
+    @product = product
+  end
+
+  def value
+    ProductStatusPolice.new(persent).value
+  end
+
+  def persent
+    #  @product.current_count/@product.count *100
+  end
+end
+
+class ProductStatusPolice
+    def initialize(persent)
+
+    end
+
+  def value
+
+  end
+
+end
