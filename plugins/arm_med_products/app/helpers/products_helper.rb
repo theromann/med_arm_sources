@@ -110,4 +110,16 @@ module ProductsHelper
     options_for_select(Product.available_search_fields.map { |field| [l('search_fields.'+field), field] },
                        selected_fields)
   end
+
+  def products_list_in(storage)
+    @products = Product.joins(:storage_product_counts).where('storage_product_counts.storage_id = ?', storage.id)
+    options_for_select(@products.map{|t| [t.name, t.id ]})
+    # Product.joins(:storage_product_counts).where('storage_product_counts.storage_id = ?', storage.id)
+        # QaDefectDocType.all.map{|doc_type| [doc_type.name, doc_type.id ]}
+  end
+
+  def count_of_product_in(storage, product)
+
+  end
+
 end

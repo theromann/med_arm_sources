@@ -4,6 +4,9 @@ resources :products do
   member do
     get 'receipt_one'
   end
+  collection do
+    get 'get_product_list_in_storage'
+  end
 end
 resources :product_storages
 

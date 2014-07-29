@@ -104,6 +104,11 @@ class ProductsController < ApplicationController
   def receipt_one
   end
 
+  def get_product_list_in_storage
+    # @products = products_list_in(params[:storage_id])
+
+  end
+
   private
   def new_product
     @product = Product.new(params[:product])
