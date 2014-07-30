@@ -16,14 +16,14 @@ class Product < ActiveRecord::Base
 
   DEFAULT_SEARCH_FIELDS = %w( id name note product_item )
 
-  SORTING_SEARCHING_FIELDS = %w( id name price status note unit product_item)
+  SORTING_SEARCHING_FIELDS = %w( id name price status_name note unit product_item)
 
   SEARCH_FIELDS = [
       ['id', "`products`.id"],
       ['product_item', "`products`.product_item"],
       ['name', "`products`.name"],
       ['price', "`products`.price"],
-      # ['status', "`product_statuses`.name"],
+      ['status', "`products`.status_name"],
       ['group', "`products_groups`.name"],
       ['location', "`locations`.name"],
       # ['status', "`count_product_statuses`.name"],
@@ -52,10 +52,18 @@ class Product < ActiveRecord::Base
     SORTING_SEARCHING_FIELDS
   end
 
+
+  #TODO  сделано для обновления статусов продуктов
+  # вообще похорошему надо как-то сделать по нормальному.
+  def readonly?
+    false
+  end
+
+
   safe_attributes 'name',
                   'price',
                   'location_id',
-                  # 'status_id',
+                  'status_name',
                   'max_count',
                   'count',
                   'note',
@@ -78,7 +86,8 @@ class Product < ActiveRecord::Base
   end
 
   def status
-    ProductStatusCalculating.new(self).value
+    self.update_attribute(:status_name, ProductStatusCalculating.new(self).value) unless ProductStatusCalculating.new(self).value == self.status_name
+    self.status_name
   end
 
   def default_storage

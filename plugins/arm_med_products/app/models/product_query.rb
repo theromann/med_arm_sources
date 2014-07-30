@@ -24,11 +24,11 @@ class ProductQuery < Query
   self.available_columns = [
       ProductQueryColumn.new(:id, sortable: "#{Product.table_name}.id", default_order: 'desc', name: 'id', caption: '#', frozen: true),
       ProductQueryColumn.new(:name, sortable: "#{Product.table_name}.name", default_order: 'desc'),
-      ProductQueryColumn.new(:price, sortable: "#{Product.table_name}.price", default_order: 'desc'),
+      # ProductQueryColumn.new(:price, sortable: "#{Product.table_name}.price", default_order: 'desc'),
       ProductQueryColumn.new(:count),
       # ProductQueryColumn.new(:location, sortable: "#{Location.table_name}.name", default_order: 'desc', groupable: true),
-      ProductQueryColumn.new(:status),#, sortable: "#{ProductStatus.table_name}.name", default_order: 'desc', groupable: true),
-      ProductQueryColumn.new(:group, sortable: "#{ProductsGroup.table_name}.name", default_order: 'desc', groupable: true),
+      ProductQueryColumn.new(:status, sortable: "#{Product.table_name}.status_name", default_order: 'desc'),
+      ProductQueryColumn.new(:group),#, sortable: "#{ProductsGroup.table_name}.name", default_order: 'desc', groupable: true),
       ProductQueryColumn.new(:note, sortable: "#{Product.table_name}.note", default_order: 'desc'),
       ProductQueryColumn.new(:product_item, sortable: "#{Product.table_name}.product_item", default_order: 'desc'),
       ProductQueryColumn.new(:unit, sortable: "#{Product.table_name}.unit", default_order: 'desc')
@@ -121,7 +121,7 @@ class ProductQuery < Query
     conditions = conditions.join(' AND ')
 
     Product.count(
-        include: ([:location, :status] + (options[:include] || [])).uniq,
+        include: ([:location] + (options[:include] || [])).uniq,
         conditions: conditions,
         order: order_option,
         joins: 'JOIN storage_product_counts ON storage_product_counts.product_id = products.id '

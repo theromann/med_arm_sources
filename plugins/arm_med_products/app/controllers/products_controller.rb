@@ -134,7 +134,11 @@ class ProductsController < ApplicationController
     sort_init 'id', 'desc'
     sort_update(  'id' => 'products.id',
                   'name' => 'products.name',
-                  'note' => 'products.note'
+                  'note' => 'products.note',
+                  'status' => 'products.status_name',
+                  # 'group' => 'enumerations.name', # TODO: сделать сортировку по группам, пока не знаю как
+                  'product_item' => 'products.product_item',
+                  'unit' => 'products.unit'
     )
     sort_clause
   end

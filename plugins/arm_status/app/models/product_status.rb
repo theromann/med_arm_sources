@@ -1,3 +1,4 @@
+# TODO удалить за ненадобностью
 class ProductStatus < ArmStatus
   OptionName = :product_status
 
@@ -12,7 +13,7 @@ class ProductStatus < ArmStatus
   end
 
   def transfer_relations(to)
-    products.update_all(status_id: to.id)
+    products.update_all(status_name: to.id)
   end
 
   def self.default
