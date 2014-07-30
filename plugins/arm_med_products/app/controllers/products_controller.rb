@@ -126,7 +126,8 @@ class ProductsController < ApplicationController
         offset: @offset,
         limit: @limit,
         products_group_ids: params[:products_group_ids],
-        product_storage_ids: params[:product_storage_ids]
+        product_storage_ids: params[:product_storage_ids],
+        product_status_names: params[:product_status_names]
     }
   end
 
@@ -152,6 +153,7 @@ class ProductsController < ApplicationController
   def find_group_resources
     @products_groups = ProductsGroup.scoped
     @product_storages = ProductStorage.scoped
+    @product_statuses = Product.pluck(:status_name).uniq
   end
 
   def authorize(ctrl = params[:controller], action = params[:action], global = false)

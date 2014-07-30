@@ -66,7 +66,7 @@ class ProductQuery < Query
       options[:products_group_ids].each do |number|
         groups << "group_id = #{number}"
       end
-      conditions << groups.join(" OR ")
+      conditions << "(#{groups.join(" OR ")})"
     end
     # TODO: убрать копи-паст
     if options[:product_storage_ids]
@@ -75,7 +75,15 @@ class ProductQuery < Query
         storages << "location_id = #{number}"
         storages << "storage_product_counts.storage_id = #{number}"
       end
-      conditions << storages.join(" OR ")
+      conditions << "(#{storages.join(" OR ")})"
+    end
+
+    if options[:product_status_names]
+      statuses = []
+      options[:product_status_names].each do |number|
+        statuses << "`products`.`status_name` = '#{number}'"
+      end
+      conditions << "(#{statuses.join(" OR ")})"
     end
 
     conditions = conditions.join(' AND ')
@@ -116,6 +124,14 @@ class ProductQuery < Query
         storages << "storage_product_counts.storage_id = #{number}"
       end
       conditions << storages.join(" OR ")
+    end
+
+    if options[:product_status_names]
+      statuses = []
+      options[:product_status_names].each do |number|
+        statuses << "`products`.`status_name` = '#{number}'"
+      end
+      conditions << statuses.join(" OR ")
     end
 
     conditions = conditions.join(' AND ')

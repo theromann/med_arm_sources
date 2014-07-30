@@ -13,4 +13,12 @@
       %th= l('products.storages')
   %tbody
     = render @product_storages, checked_groups: params[:product_storage_ids].to_a
+
+%table
+  %thead
+    %tr
+      %th &nbsp;
+      %th= l('products.statuses')
+  %tbody
+    = render partial: 'product_statuses/product_status', locals: { product_statuses: @product_statuses, checked_groups: params[:product_status_names].to_a}
 = submit_tag l(:button_apply), form: 'search-form'

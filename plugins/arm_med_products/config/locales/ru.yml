@@ -41,6 +41,7 @@ ru:
     description: Описание
     groups: Группы товаров
     storages: Места хранения
+    statuses: Статусы товаров
 
   confirm_delete_product: Действительно хотите удалить данное наименование товара
   label_products_groups_new: Добавить новую группу товаров
@@ -65,7 +66,6 @@ ru:
   product_depreciation:
     save: Сохранить
     add: Списание товаров
-
 
   product:
     add:  Добавить количества товар

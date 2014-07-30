@@ -1,0 +1,7 @@
+- product_statuses.each do |status|
+  - resource_id = status
+  - node_status = checked_groups.include? resource_id
+  %tr
+    %td= check_box_tag 'product_status_names[]', status, node_status, form: 'search-form'
+    %td
+      %span.group-name= status
