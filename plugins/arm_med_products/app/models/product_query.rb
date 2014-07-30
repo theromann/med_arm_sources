@@ -40,7 +40,7 @@ class ProductQuery < Query
     add_available_filter 'price', type: :list, values: Product.all.map(&:price).compact.map{|price| price}.uniq.sort
     add_available_filter 'count', type: :list, values: Product.all.map(&:count).compact.map{|count| count}.uniq.sort
     # add_available_filter 'location_id', type: :list, values: Product.all.map(&:location).compact.map{|location| [location.to_s, location.id.to_s]}.uniq.sort
-    add_available_filter 'status_id', type: :list, values: Product.all.map(&:status).compact.map{|status| [status.to_s, status.id.to_s]}.uniq.sort
+    # add_available_filter 'status_id', type: :list, values: Product.all.map(&:status).compact.map{|status| [status.to_s, status.id.to_s]}.uniq.sort
     add_available_filter 'group_id', type: :list, values: Product.all.map(&:group).compact.map{|group| [group.to_s, group.id.to_s]}.uniq.sort
     add_available_filter 'note', type: :list, values: Product.all.map(&:note).compact.map{|note| note}.uniq.sort
     add_available_filter 'product_item', type: :list, values: Product.all.map(&:product_item).compact.map{|product_item| product_item}.uniq.sort
