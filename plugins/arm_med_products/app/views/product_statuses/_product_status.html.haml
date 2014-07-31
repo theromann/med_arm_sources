@@ -1,3 +1,5 @@
+- product_statuses ||=  local_assigns[:product_statuses]
+- checked_groups ||= local_assigns[:checked_groups]
 - product_statuses.each do |status|
   - resource_id = status
   - node_status = checked_groups.include? resource_id
