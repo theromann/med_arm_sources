@@ -7,11 +7,15 @@ class Product < ActiveRecord::Base
   has_many :storage_product_counts, foreign_key: :product_id, dependent: :destroy
   has_many :storages, through: :storage_product_counts
 
+  acts_as_customizable
+  has_many :journals, :as => :journalized, :dependent => :destroy
+
   validates_presence_of :location, :name
   validates :name, :uniqueness => true
 
   validate :must_be_location_if_count_more_then_zero
 
+  after_save :create_journal
   after_create :create_storage_product_count
 
   DEFAULT_SEARCH_FIELDS = %w( id name note product_item )
@@ -59,6 +63,62 @@ class Product < ActiveRecord::Base
     false
   end
 
+  def notified_users
+    []
+  end
+
+  def notified_watchers
+    []
+  end
+
+  def init_journal(user, notes = "")
+    @current_journal ||= Journal.new(:journalized => self, :user => user, :notes => notes)
+    if new_record?
+      @current_journal.notify = false
+    else
+      attrs = attributes_with_assocciations(attributes)
+      @attributes_before_change = attrs
+      @custom_values_before_change = {}
+      self.custom_field_values.each {|c| @custom_values_before_change.store c.custom_field_id, c.value }
+    end
+    @current_journal
+  end
+
+  def attributes_with_assocciations(attrs)
+    attrs = attrs.dup
+    analytic_info = nil
+    analytic_info = attrs.select{|k,v| k.include?('analytic')} if attrs['analytic_id'].present?
+    analytic_info.delete('analytic_group') if analytic_info.present?
+    attrs.select!{|k,v| !k.include?('analytic')}
+    attrs.merge!({'analytic_info' => analytic_info})
+    attrs
+  end
+
+
+# Returns the id of the last journal or nil
+  def last_journal_id
+    if new_record?
+      nil
+    else
+      journals.maximum(:id)
+    end
+  end
+# Returns a scope for journals that have an id greater than journal_id
+  def journals_after(journal_id)
+    scope = journals.reorder("#{Journal.table_name}.id ASC")
+    if journal_id.present?
+      scope = scope.where("#{Journal.table_name}.id > ?", journal_id.to_i)
+    end
+    scope
+  end
+# Returns the initial status of the issue
+# Returns nil for a new issue
+  def status_was
+    if status_id_was && status_id_was.to_i > 0
+      @status_was ||= IssueStatus.find_by_id(status_id_was)
+    end
+  end
+
 
   safe_attributes 'name',
                   'price',
@@ -99,12 +159,66 @@ class Product < ActiveRecord::Base
   end
 
   private
+  def create_journal
+    if @current_journal
+      # attributes changes
+      if @attributes_before_change
+        #produtcs -  ["id", "name", "price", "location_id", "note", "unit", "status_name", "group_id", "product_item", "max_count"]
+        (Product.column_names - %w(id )).each {|c|
+          before = @attributes_before_change[c]
+          after = send(c)
+          next if before == after || (before.blank? && after.blank?)
+          @current_journal.details << JournalDetail.new(:property => 'attr',
+          :prop_key => c,
+          :old_value => before,
+          :value => after)
+        }
+      end
+      if @custom_values_before_change
+        # custom fields changes
+        custom_field_values.each {|c|
+          before = @custom_values_before_change[c.custom_field_id]
+          after = c.value
+          next if before == after || (before.blank? && after.blank?)
+          if before.is_a?(Array) || after.is_a?(Array)
+            before = [before] unless before.is_a?(Array)
+            after = [after] unless after.is_a?(Array)
+            # values removed
+            (before - after).reject(&:blank?).each do |value|
+              @current_journal.details << JournalDetail.new(:property => 'cf',
+              :prop_key => c.custom_field_id,
+              :old_value => value,
+              :value => nil)
+            end
+            # values added
+            (after - before).reject(&:blank?).each do |value|
+              @current_journal.details << JournalDetail.new(:property => 'cf',
+              :prop_key => c.custom_field_id,
+              :old_value => nil,
+              :value => value)
+            end
+          else
+            @current_journal.details << JournalDetail.new(:property => 'cf',
+            :prop_key => c.custom_field_id,
+            :old_value => before,
+            :value => after)
+          end
+        }
+      end
+      @current_journal.save
+      # reset current journal
+      init_journal @current_journal.user, @current_journal.notes
+    end
+  end
 
   def must_be_location_if_count_more_then_zero
     if count.present? and location.nil?
       errors.add :base, :error_must_be_location_if_count_more_then_zero
     end
   end
+
+
+
 end
 
 class ProductStatusCalculating

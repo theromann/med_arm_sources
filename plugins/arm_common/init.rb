@@ -14,7 +14,7 @@ end
 
 
 Rails.configuration.to_prepare do
-  %w(application_helper ).each do |resource|
+  %w(application_helper issues_helper ).each do |resource|
     plugin_name = 'arm_common'
     resource_patch = [plugin_name, [resource, 'patch'].join('_')].join('/')
 

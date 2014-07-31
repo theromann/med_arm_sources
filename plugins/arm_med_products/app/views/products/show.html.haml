@@ -12,3 +12,10 @@
 
 = render 'info'
 = render_tabs product_info_tabs
+
+%hr
+.history
+  - if @journals.present?
+    %h3
+      =l(:label_history)
+    = render :partial => 'history', :locals => { :product => @product, :journals => @journals }

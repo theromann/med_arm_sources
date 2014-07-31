@@ -11,6 +11,14 @@ class ProductsController < ApplicationController
   include QueriesHelper
   helper :product_queries
   include ProductQueriesHelper
+  helper :issues
+  include IssuesHelper
+
+  def show
+    @journals = @product.journals.includes(:user, :details).reorder("#{Journal.table_name}.id ASC").all
+    @journals.each_with_index {|j,i| j.indice = i+1}
+    # @journals.reverse! if User.current.wants_comments_in_reverse_order?
+  end
 
   def index
     retrieve_query
@@ -65,6 +73,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    return unless update_product_from_params
   end
 
   def update
@@ -145,6 +154,8 @@ class ProductsController < ApplicationController
   end
 
   def update_product_from_params
+    @product.init_journal(User.current)
+
     action_attributes = params[:product]
     @product.safe_attributes = action_attributes
     true
