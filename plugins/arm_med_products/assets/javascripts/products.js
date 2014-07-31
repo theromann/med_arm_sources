@@ -11,11 +11,6 @@ jQuery(document).ready(function($) {
         updateMaxProductCount($(this));
     });
 
-//  скрытие "добавить перемешение" и show кнопки СОХРАНИТЬ при нажатии "добавить перемешение"
-    $('#form_for_product_movement').on('click', ".add_fields", function(){
-      alert('ssssss');
-      triggerSaveButtonAndLink($(this));
-    });
 });
 
 function updateMovementProductSelect(elem) {
@@ -37,9 +32,4 @@ function updateMaxProductCount(elem) {
     + "/?storage_id=" + storage_id
     + "&product_id=" + product_id
     + "&product_count_input_id=" + product_count_input_id).done();
-}
-
-function triggerSaveButtonAndLink(elem) {
-  $("#form_submit").css('display', 'block');
-  elem.hide();
 }

@@ -2,4 +2,5 @@
   -storage = ProductStorage.find(c.storage_id).name
   -count = c.count
   .where-is-product
-    = "#{storage} #{count}"
+    - if count > 0
+      = "Место хранения: '#{storage}' количество: #{count}"

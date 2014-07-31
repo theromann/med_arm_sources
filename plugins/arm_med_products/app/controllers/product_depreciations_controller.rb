@@ -2,7 +2,7 @@ class ProductDepreciationsController < ApplicationController
   unloadable
   before_filter :authorize
 
-  before_filter :new_product_depreciation, only: [:new, :create, :cancel_one]
+  before_filter :new_product_depreciation, only: [:new]
   before_filter :find_product_depreciation, only: [:show, :edit, :update, :destroy]
 
 
@@ -17,6 +17,7 @@ class ProductDepreciationsController < ApplicationController
   end
 
   def create
+    @depreciation = ProductDepreciation.new(params[:product_depreciation])
     return unless update_product_movement_from_params
     if @depreciation.save
       respond_to do |format|
@@ -27,15 +28,6 @@ class ProductDepreciationsController < ApplicationController
       redirect_to products_path
     end
   end
-
-  def edit
-
-  end
-
-  def cancel_one
-  end
-
-
 
   private
 
