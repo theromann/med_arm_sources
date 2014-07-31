@@ -41,6 +41,7 @@ class ProductDepreciationsController < ApplicationController
 
   def new_product_depreciation
     @depreciation = ProductDepreciation.new(params[:product_depreciation])
+    @depreciation.product_storage_relations.build
   end
 
 

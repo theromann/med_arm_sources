@@ -3,10 +3,8 @@
 = javascript_include_tag :cocoon, :plugin => :arm_common
 = stylesheet_link_tag :select2, plugin: :arm_common
 
-
-= semantic_form_for @depreciation do |f|
-  = f.semantic_fields_for :product_storage_relations do |relation|
-    -#= render 'cancel_one_fields', :f => relation
-  .links
-    = link_to_add_association l('product_depreciation.add'), f, :product_storage_relations
-    = f.submit l('product_depreciation.save'), id: 'form_submit'
+#form_for_product_depreciation
+  = semantic_form_for @depreciation do |f|
+    = f.semantic_fields_for :product_storage_relations do |rel|
+      = render 'product_storage_relation_fields', :f => rel
+    = f.actions
