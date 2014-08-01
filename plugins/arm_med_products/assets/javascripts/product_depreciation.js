@@ -11,6 +11,17 @@ jQuery(document).ready(function($) {
 
 });
 
+$( document ).ajaxComplete(function() {
+  $('#form_for_product_depreciation').on('change', ".movement_from_select", function(){
+    updateMovementProductSelect($(this));
+  });
+
+//    выбор "товар - утсанавливается макс и мин значение для возможности перенести"
+  $('#form_for_product_depreciation').on('change', ".movement_product_select", function(){
+    updateMaxProductCount($(this));
+  });
+});
+
 function updateMovementProductSelect(elem) {
     var storage_id = elem.val();
     var product_select_id = elem.parents('.one-product-movement').find(".movement_product_select").attr("id");
