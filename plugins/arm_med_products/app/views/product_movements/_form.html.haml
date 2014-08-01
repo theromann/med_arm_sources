@@ -13,5 +13,5 @@
   = semantic_form_for @movement do |f|
     = f.semantic_fields_for :product_storage_relations do |rel|
       = render 'product_storage_relation_fields', :f => rel
-    = f.actions
+    = f.submit l('product_movement.save'), id: 'form_submit'
 
