@@ -7,6 +7,8 @@
 = stylesheet_link_tag :products, plugin: :arm_med_products
 - content_for :header_tags do
   = stylesheet_link_tag :select2, plugin: :arm_common
+
+
   = javascript_include_tag 'select2.min.js', plugin: :arm_common
   = javascript_include_tag :select2_locale_ru, plugin: :arm_common
   = javascript_include_tag :search_fields_select2, plugin: :arm_common
@@ -20,7 +22,7 @@
     - if User.current.allowed_to?(:create_product, :system)
       = link_to l('products.new'), new_product_path, class: 'icon icon-add', remote: true
     - if User.current.allowed_to?(:create_product_movements, :system)
-      = link_to l('product_movement.new'), new_product_movement_path, class: 'icon icon-add', remote: true
+      = link_to l('product_movement.new'), '#', class: 'product-movement-new icon icon-add'
     - if User.current.allowed_to?(:create_product_depreciation, :system)
       = link_to l(:label_cancellation_product), {controller: 'product_depreciations', action: 'new'}, class: 'icon icon-zoom-out', remote: true
 
@@ -34,3 +36,6 @@
 %p.pagination= pagination_links_full @products_pages, @products_count
 = render partial: 'main_table'
 %p.pagination= pagination_links_full @products_pages, @products_count
+
+
+= render partial: 'product_movements/form'

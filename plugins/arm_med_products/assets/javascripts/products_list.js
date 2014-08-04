@@ -1,10 +1,11 @@
 jQuery(document).ready(function($) {
-  $('.csv-export').click(function(event) {
+  $('.product-movement-new').click(function(event) {
     event.preventDefault();
     event.stopPropagation();
-    showModal('csv-export-options', '330px');
+    showModal('form_for_product_movement', '900px');
+    $(".select2").select2();
   });
-  $('.csv-export-cancel, .csv-export-submit').click(function() {
+  $('#product_movement_submit, #product_movement_cancel').click(function() {
     hideModal(this);
   });
 

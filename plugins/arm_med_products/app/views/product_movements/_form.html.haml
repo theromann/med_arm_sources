@@ -1,17 +1,10 @@
-= stylesheet_link_tag :product_storage_relation, plugin: :arm_med_products
-= javascript_include_tag 'jquery-ui-timepicker-addon', plugin: :arm_common
-= javascript_include_tag 'jquery-ui-timepicker-addon-ru', plugin: :arm_common
-= stylesheet_link_tag 'jquery-ui-timepicker-addon', plugin: :arm_common
-= stylesheet_link_tag 'product_movement', plugin: :arm_med_products
 
-%h3.title
-  = l('product_movement.new')
 
-= render partial: 'products/form_scripts_and_styles'
-
+- @movement = ProductMovement.new
+- @movement.product_storage_relations.build
 #form_for_product_movement
+  = render partial: 'products/form_scripts_and_styles'
   = semantic_form_for @movement do |f|
     = f.semantic_fields_for :product_storage_relations do |rel|
-      = render 'product_storage_relation_fields', :f => rel
-    = f.submit l('product_movement.save'), id: 'form_submit'
-
+      = render 'product_movements/product_storage_relation_fields', :f => rel
+    = f.submit l('product_movement.save'), id: 'product_movement_submit'
