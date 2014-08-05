@@ -1,11 +1,13 @@
 = javascript_include_tag :product_depreciation, plugin: :arm_med_products
+= render 'products/form_scripts_and_styles'
+
 
 .nested-fields.one-product-movement
-  .product_movement_header
+  .product-movement-header
     = f.input :time, as: :date_with_calendar
-  .movement_line
-    .movement_from
-      = f.input :product_storage_from, input_html: { :class => 'select2 movement_from_select' }
+  .movement-line
+    .movement-from
+      = f.input :product_storage_from, input_html: { :class => 'select2 movement-from-select' }
   .product_movement_line
     .product
       = f.input :product, input_html: { :class => 'select2 movement_product_select' }, label: :status_id, :include_blank => true
@@ -16,3 +18,6 @@
       = f.input :is_depreciation, as: :hidden, input_html: { value: true}
   .movement_note
     = f.input :note, :input_html => { :class => 'autogrow', :rows => 2, :cols => 69 }
+
+:javascript
+  $('select.select2').select2({allowClear: true});

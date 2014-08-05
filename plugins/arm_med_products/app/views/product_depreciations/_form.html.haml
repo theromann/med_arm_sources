@@ -2,9 +2,11 @@
 = javascript_include_tag :select2_locale_ru, plugin: :arm_common
 = javascript_include_tag :cocoon, :plugin => :arm_common
 = stylesheet_link_tag :select2, plugin: :arm_common
-= stylesheet_link_tag 'product_movement', plugin: :arm_med_products
+= stylesheet_link_tag 'product_movements', plugin: :arm_med_products
 
 #form_for_product_depreciation
+  %h3.title
+    = l('product_depreciation.add')
   = semantic_form_for @depreciation do |f|
     = f.semantic_fields_for :product_storage_relations do |rel|
       = render 'product_storage_relation_fields', :f => rel

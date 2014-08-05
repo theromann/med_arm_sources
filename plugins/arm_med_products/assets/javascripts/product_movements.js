@@ -1,25 +1,15 @@
 jQuery(document).ready(function($) {
-    eventOnMovementFromSelect();
-    eventOnMovementProductSelect();
-});
+    $('select.select2').select2();
 
-function eventOnMovementFromSelect() {
-    //    выбор "откуда - переренер product select"
-    $('#form_for_product_depreciation').on('change', ".movement-from-select", function(){
+//    выбор "откуда - переренер product select"
+    $('#form-for-product-movement').on('change', ".movement-from-select", function(){
         updateMovementProductSelect($(this));
     });
-}
 
-function eventOnMovementProductSelect() {
-    //    выбор "товар - утсанавливается макс и мин значение для возможности перенести"
-    $('#form_for_product_depreciation').on('change', ".movement_product_select", function(){
+//    выбор "товар - утсанавливается макс и мин значение для возможности перенести"
+    $('#form-for-product-movement').on('change', ".movement_product_select", function(){
         updateMaxProductCount($(this));
     });
-}
-
-$( document ).ajaxComplete(function() {
-    eventOnMovementFromSelect();
-    eventOnMovementProductSelect();
 });
 
 function updateMovementProductSelect(elem) {

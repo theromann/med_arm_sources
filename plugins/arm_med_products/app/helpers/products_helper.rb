@@ -113,7 +113,7 @@ module ProductsHelper
 
   def products_list_in(storage)
     @products = Product.joins(:storage_product_counts).where('storage_product_counts.storage_id = ?', storage)
-    options_for_select(@products.map{|t| [t.name, t.id ]})
+    options_for_select([] + @products.sort.map{|t| [t.name, t.id ]})
   end
 
   def max_product_count(storage_id, product_id)

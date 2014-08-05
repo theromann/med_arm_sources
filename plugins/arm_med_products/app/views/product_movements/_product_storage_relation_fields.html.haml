@@ -1,20 +1,27 @@
-= javascript_include_tag :products, plugin: :arm_med_products
-= stylesheet_link_tag 'product_movement', plugin: :arm_med_products
+= javascript_include_tag :product_movements, plugin: :arm_med_products
+= stylesheet_link_tag :product_movements, plugin: :arm_med_products
 
 .nested-fields.one-product-movement
-  .product_movement_header
+  .product-movement-header
     = f.input :time, as: :date_with_calendar
-  .movement_line
-    .movement_from
-      = f.input :product_storage_from, input_html: { :class => 'select2 movement_from_select' }
+  .movement-line
+    .movement-from
+      = f.input :product_storage_from,
+                input_html: { :class => 'select2 movement-from-select' },
+                 collection: options_for_select(ProductStorage.scoped.map{|t| [t.name, t.id ]})
     .movement_to
-      = f.input :product_storage_to, input_html: { :class => 'select2 movement_to_select' }
+      = f.input :product_storage_to, input_html: { :class => 'select2 movement_to_select' },
+                 collection: options_for_select(ProductStorage.scoped.map{|t| [t.name, t.id ]})
   .product_movement_line
     .product
-      = f.input :product, input_html: { :class => 'select2 movement_product_select' }, label: :status_id, :include_blank => false
+      = f.input :product, input_html: { :class => 'select2 movement_product_select' },
+                label: :status_id,
+                include_blank: true,
+                collection: options_for_select(Product.scoped.sort.map{|t| [t.name, t.id ]})
     .maintainer
-      = f.input :maintainer, :selected => User.current.id, input_html: { value: User.current.id, :class => 'select2 movement_maintainer',  }
+      = f.input :maintainer, :selected => User.current.id, input_html: { :class => 'select2 movement_maintainer',  }
     .count
       = f.input :count, :input_html => { :size => 10 }
   .movement_note
     = f.input :note, :input_html => { :class => 'autogrow movement_note', :rows => 2, :cols => 69 }
+

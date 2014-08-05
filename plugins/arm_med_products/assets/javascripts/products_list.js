@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
   $('.product-movement-new').click(function(event) {
     event.preventDefault();
     event.stopPropagation();
-    showModal('form_for_product_movement', '900px');
+    showModal('form-for-product-movement', '900px');
     $(".select2").select2();
   });
   $('#product_movement_submit, #product_movement_cancel').click(function() {
