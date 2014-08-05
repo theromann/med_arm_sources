@@ -981,6 +981,8 @@ a.close-icon:hover {background-image:url('../images/close_hl.png');}
   padding-bottom: 3px;
 }
 
+.icon-depreciation { background-image: url(../images/depreciation.png); }
+
 .icon-add { background-image: url(../images/add.png); }
 .icon-edit { background-image: url(../images/edit.png); }
 .icon-copy { background-image: url(../images/copy.png); }
