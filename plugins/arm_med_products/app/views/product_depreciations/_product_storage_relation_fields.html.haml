@@ -10,9 +10,9 @@
       = f.input :product_storage_from, input_html: { :class => 'select2 movement-from-select' }
   .product_movement_line
     .product
-      = f.input :product, input_html: { :class => 'select2 movement_product_select' }, label: :status_id, :include_blank => true
+      = f.input :product, input_html: { :class => 'select2 movement-product-select' }, label: :status_id, :include_blank => true
     .maintainer
-      = f.input :maintainer, :selected => User.current.id, input_html: { :class => 'select2 select2_updated_product_field' }
+      = f.input :maintainer, :selected => User.current.id, input_html: { :class => 'select2 select2-updated-product-field' }
     .count
       = f.input :count, :input_html => { :size => 10 }
       = f.input :is_depreciation, as: :hidden, input_html: { value: true}

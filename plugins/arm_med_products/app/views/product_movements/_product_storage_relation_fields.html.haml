@@ -10,11 +10,11 @@
                 input_html: { :class => 'select2 movement-from-select' },
                  collection: options_for_select(ProductStorage.scoped.map{|t| [t.name, t.id ]})
     .movement_to
-      = f.input :product_storage_to, input_html: { :class => 'select2 movement_to_select' },
+      = f.input :product_storage_to, input_html: { :class => 'select2 movement-to-select' },
                  collection: options_for_select(ProductStorage.scoped.map{|t| [t.name, t.id ]})
   .product_movement_line
     .product
-      = f.input :product, input_html: { :class => 'select2 movement_product_select' },
+      = f.input :product, input_html: { :class => 'select2 movement-product-select' },
                 label: :status_id,
                 include_blank: true,
                 collection: options_for_select(Product.scoped.sort.map{|t| [t.name, t.id ]})
