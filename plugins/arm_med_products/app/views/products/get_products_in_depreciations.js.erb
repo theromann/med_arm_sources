@@ -1,0 +1,7 @@
+//$("#<%= params[:depreciation_product_select] %>").html("<%= j products_list_in(params[:storage_id]) %>");
+// unselected обычный селект чтобы не передалось значение на серврер
+// пока используем конкретный Id selectа. если будем делать форму с несколькими перемещениями сразу, то тут надо переделывать
+$("#product_depreciation_product_storage_relations_attributes_0_product_id").find("option:selected").prop("selected", false);
+// очишение селект2
+$("#product_depreciation_product_storage_relations_attributes_0_product_id").select2("val", null);
+$("#product_depreciation_product_storage_relations_attributes_0_product_id").html("<option></option><%= j products_list_in(params[:storage_id]) %>");

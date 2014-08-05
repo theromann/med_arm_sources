@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
     showModal('form-for-product-movement', '900px');
     $(".select2").select2();
   });
-  $('#product_movement_submit, #product_movement_cancel').click(function() {
+  $('#product-movement-submit, #product-movement-cancel').click(function() {
     hideModal(this);
   });
 

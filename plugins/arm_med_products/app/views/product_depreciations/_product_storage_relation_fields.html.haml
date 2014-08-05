@@ -1,16 +1,15 @@
-= javascript_include_tag :product_depreciation, plugin: :arm_med_products
+= javascript_include_tag :product_depreciations, plugin: :arm_med_products
 = render 'products/form_scripts_and_styles'
-
 
 .nested-fields.one-product-movement
   .product-movement-header
     = f.input :time, as: :date_with_calendar
   .movement-line
     .movement-from
-      = f.input :product_storage_from, input_html: { :class => 'select2 movement-from-select' }
+      = f.input :product_storage_from, input_html: { :class => 'select2 depreciation-from-select' }
   .product_movement_line
     .product
-      = f.input :product, input_html: { :class => 'select2 movement-product-select' }, label: :status_id, :include_blank => true
+      = f.input :product, input_html: { :class => 'select2 depreciation-product-select' }, label: :status_id, :include_blank => true
     .maintainer
       = f.input :maintainer, :selected => User.current.id, input_html: { :class => 'select2 select2-updated-product-field' }
     .count

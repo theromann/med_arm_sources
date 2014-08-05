@@ -1,13 +1,10 @@
-= javascript_include_tag 'select2.min.js', plugin: :arm_common
-= javascript_include_tag :select2_locale_ru, plugin: :arm_common
-= javascript_include_tag :cocoon, :plugin => :arm_common
-= stylesheet_link_tag :select2, plugin: :arm_common
-= stylesheet_link_tag 'product_movements', plugin: :arm_med_products
+- @depreciation = ProductDepreciation.new
+- @depreciation.product_storage_relations.build
 
-#form_for_product_depreciation
+#form-for-product-depreciation
   %h3.title
-    = l('product_depreciation.add')
+    = l('product_depreciation.new')
   = semantic_form_for @depreciation do |f|
     = f.semantic_fields_for :product_storage_relations do |rel|
-      = render 'product_storage_relation_fields', :f => rel
-    = f.submit l('product_depreciation.save'), id: 'form_submit'
+      = render 'product_depreciations/product_storage_relation_fields', :f => rel
+    = f.submit l('product_depreciation.save'), id: 'product-depreciation-submit'

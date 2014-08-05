@@ -12,7 +12,9 @@
   = javascript_include_tag 'select2.min.js', plugin: :arm_common
   = javascript_include_tag :select2_locale_ru, plugin: :arm_common
   = javascript_include_tag :search_fields_select2, plugin: :arm_common
-  = javascript_include_tag :products_list, plugin: :arm_med_products
+  = javascript_include_tag :product_movements, plugin: :arm_med_products
+  = javascript_include_tag :product_depreciations, plugin: :arm_med_products
+
 - rewrite_title(l('labels.products'))
 - content_for :sidebar do
   = render 'group_filters'
@@ -24,7 +26,7 @@
     - if User.current.allowed_to?(:create_product_movements, :system)
       = link_to l('product_movement.new'), '#', class: 'product-movement-new icon icon-add'
     - if User.current.allowed_to?(:create_product_depreciation, :system)
-      = link_to l(:label_cancellation_product), {controller: 'product_depreciations', action: 'new'}, class: 'icon icon-zoom-out', remote: true
+      = link_to l(:label_cancellation_product), '#', class: 'product-depreciation-new icon icon-zoom-out'
 
 = form_tag({ controller: 'products', action: 'index' }, method: :get, id: 'search-form') do
   = hidden_field_tag 'set_filter', '0'
@@ -39,4 +41,6 @@
 
 
 = render partial: 'product_movements/form'
+
+= render partial: 'product_depreciations/form'
 

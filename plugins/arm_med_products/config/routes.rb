@@ -7,6 +7,10 @@ resources :products do
   collection do
     get 'get_product_list_in_storage'
     get 'get_max_product_count'
+    get 'get_max_in_movements'
+    get 'get_products_in_movements'
+    get 'get_max_in_depreciations'
+    get 'get_products_in_depreciations'
   end
 end
 resources :product_storages

@@ -65,6 +65,7 @@ ru:
   product_depreciation:
     save: Сохранить
     add: Списание товаров
+    new: Списать товар
 
   product:
     add:  Добавить количества товар
