@@ -1,6 +1,6 @@
 .search
   = hidden_field_tag 'form_send_detector', true
-  = text_field_tag 'products_search_query', session[:products_search_query], size: 80,
+  = text_field_tag 'products_search_query', session[:products_search_query], size: 40,
       placeholder: l(:search)
   = submit_tag l(:search), class: 'small', name: nil
   = link_to l(:button_clear), '#', class: 'icon icon-reload',
