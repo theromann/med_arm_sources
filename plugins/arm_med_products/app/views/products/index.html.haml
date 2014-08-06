@@ -5,15 +5,15 @@
 = javascript_include_tag :select_list_move
 = javascript_include_tag :collapsible, plugin: :arm_common
 = stylesheet_link_tag :products, plugin: :arm_med_products
+
 - content_for :header_tags do
   = stylesheet_link_tag :select2, plugin: :arm_common
-
-
   = javascript_include_tag 'select2.min.js', plugin: :arm_common
   = javascript_include_tag :select2_locale_ru, plugin: :arm_common
   = javascript_include_tag :search_fields_select2, plugin: :arm_common
   = javascript_include_tag :product_movements, plugin: :arm_med_products
   = javascript_include_tag :product_depreciations, plugin: :arm_med_products
+  = javascript_include_tag :products, plugin: :arm_med_products
 
 - rewrite_title(l('labels.products'))
 - content_for :sidebar do
