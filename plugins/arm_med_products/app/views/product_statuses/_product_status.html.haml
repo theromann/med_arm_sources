@@ -1,4 +1,4 @@
-- product_statuses ||=  local_assigns[:product_statuses].reject{|a| a==''}
+- product_statuses ||=  local_assigns[:product_statuses].reject{|a| a.strip==''}
 - checked_groups ||= local_assigns[:checked_groups]
 - product_statuses.each do |status|
   - resource_id = status
