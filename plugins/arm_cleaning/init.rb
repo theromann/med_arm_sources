@@ -29,3 +29,22 @@ Redmine::MenuManager.map :customer_menu do |menu|
   # menu.push :plugins, {:controller => 'admin', :action => 'plugins'}, :last => true
   # menu.push :info, {:controller => 'admin', :action => 'info'}, :caption => :label_information_plural, :last => true
 end
+
+Redmine::MenuManager.map :top_menu do |menu|
+  menu.delete :projects
+end
+
+Rails.configuration.to_prepare do
+  %w(account_controller welcome_controller ).each do |resource|
+    plugin_name = 'arm_cleaning'
+    resource_patch = [plugin_name, [resource, 'patch'].join('_')].join('/')
+
+    require_dependency resource # Можно спрятать внутрь патчей
+    #require resource_patch # Если директория подключения совпадает с модулем, то нет необходимости явно указывать require
+
+    resource_constant, resource_patch_constant = [resource, resource_patch].map(&:camelize).map(&:constantize)
+
+    resource_constant.send(:include, resource_patch_constant) unless resource_constant.included_modules.include? resource_patch_constant
+  end
+end
+

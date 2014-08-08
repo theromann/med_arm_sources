@@ -1,3 +1,7 @@
 = arm_cleaning
 
 Description goes here
+
+added a WeclomeController override
+added customer_menu
+remove fast_search from base layout

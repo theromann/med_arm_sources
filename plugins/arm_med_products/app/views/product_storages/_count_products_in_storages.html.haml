@@ -1,6 +1,16 @@
-- @product.storage_product_counts.each do |c|
-  -storage = ProductStorage.find(c.storage_id).name
-  -count = c.count
-  .where-is-product
-    - if count > 0
-      = "Место хранения: '#{storage}' количество: #{count}"
+%table.list.count_products_in_storages{style:"width:400px"}
+  %thead
+    %th
+      = l(:label_product_storage)
+    %th
+      = l(:field_count)
+  %tbody.where-is-product
+    - @product.storage_product_counts.each do |c|
+      -storage = ProductStorage.find(c.storage_id).name
+      -count = c.count
+      - if count > 0
+        %tr
+          %td
+            = "#{storage}"
+          %td
+            = "#{count}"
