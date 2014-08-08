@@ -20,25 +20,18 @@
 <div id="wrapper2">
 <div id="wrapper3">
 <div id="top-menu">
-    <div id="account">
+  <% if User.current.logged? %>
+       <div id="account">
         <%= render_menu :account_menu -%>
     </div>
     <%= content_tag('div', "#{l(:label_logged_as)} #{link_to_user(User.current, :format => :username)}".html_safe, :id => 'loggedas') if User.current.logged? %>
     <%= render_menu :top_menu if User.current.logged? || !Setting.login_required? -%>
+  <% end %>
 </div>
 
 <div id="header">
     <% if User.current.logged? || !Setting.login_required? %>
-    <div id="quick-search">
-        <%= form_tag({:controller => 'search', :action => 'index', :id => @project}, :method => :get ) do %>
-        <%= hidden_field_tag(controller.default_search_scope, 1, :id => nil) if controller.default_search_scope %>
-        <label for='q'>
-          <%= link_to l(:label_search), {:controller => 'search', :action => 'index', :id => @project}, :accesskey => accesskey(:search) %>:
-        </label>
-        <%= text_field_tag 'q', @question, :size => 20, :class => 'small', :accesskey => accesskey(:quick_search) %>
-        <% end %>
-        <%= render_project_jump_box %>
-    </div>
+    <!--Здесь был быстрый search-->
     <% end %>
 
     <h1><%= page_header_title %></h1>
@@ -70,7 +63,7 @@
 
 <div id="footer">
   <div class="bgl"><div class="bgr">
-    <!--Powered by <%#= link_to Redmine::Info.app_name, Redmine::Info.url %> &copy; 2006-2014 Jean-Philippe Lang-->
+    Powered by <%= link_to Redmine::Info.app_name, Redmine::Info.url %> 2014 ARM-project
   </div></div>
 </div>
 </div>
